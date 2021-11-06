@@ -11,7 +11,18 @@ config_version=4
 [application]
 
 config/name="infested-station"
+run/main_scene="res://main_scene.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=320
+window/size/height=200
+window/size/resizable=false
+window/size/test_width=1280
+window/size/test_height=800
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [physics]
 
