@@ -8,3 +8,6 @@ export_presets.cfg
 
 # IDE-specific ignores
 .vscode/
+
+# Project-specific ignores
+/external_resources/*.png
