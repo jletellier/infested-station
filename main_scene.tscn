@@ -16,7 +16,7 @@ _data = {
 [node name="Tutorial001" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 25, 38 )
+position = Vector2( 25, 39 )
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 0, 48 )
@@ -31,3 +31,4 @@ loop = false
 [node name="Enemy" parent="Path2D/PathFollow2D" instance=ExtResource( 4 )]
 
 [node name="Item" parent="." instance=ExtResource( 5 )]
+position = Vector2( 168, 104 )

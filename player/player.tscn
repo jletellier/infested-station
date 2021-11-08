@@ -3,9 +3,8 @@
 [ext_resource path="res://external_resources/Premade_Character_05.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 8.82132
-height = 0.0
+[sub_resource type="CircleShape2D" id=24]
+radius = 7.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle_down"
@@ -227,8 +226,7 @@ frame = 74
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
-scale = Vector2( 0.75, 0.75 )
-shape = SubResource( 1 )
+shape = SubResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_down = SubResource( 2 )
