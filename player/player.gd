@@ -12,6 +12,8 @@ enum {
 	ATTACK
 }
 
+const ItemRes = preload("res://items/item.tscn")
+
 var state = MOVE
 var velocity = Vector2.ZERO
 
@@ -55,8 +57,18 @@ func move_state(delta):
 
 
 func attack_state():
+	state = MOVE
 	velocity = Vector2.ZERO
-	# animationState.travel("Attack")
+
+	var new_item_pos = self.position + (animation_tree.get("parameters/idle/blend_position") * 20)
+
+	# Check if new position is not colliding with anything
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(self.position, new_item_pos)
+	if !result:
+		var item = ItemRes.instance()
+		item.position = new_item_pos
+		self.get_parent().add_child(item)
 
 
 func move():
