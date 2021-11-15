@@ -52,7 +52,11 @@ func move_state(delta):
 	else:
 		if snapped_position == Vector2.ZERO:
 			snapped_position = (
-				position.snapped(Vector2.ONE * TILE_SIZE) + (Vector2.ONE * TILE_SIZE / 2))
+				position - 
+				(Vector2.ONE * TILE_SIZE / 2) +
+				(animation_tree.get("parameters/idle/blend_position") * TILE_SIZE / 2))
+			snapped_position = snapped_position.snapped(Vector2.ONE * TILE_SIZE)
+			snapped_position += Vector2.ONE * TILE_SIZE / 2
 		
 		animation_state.travel("idle")
 		position = position.move_toward(snapped_position, MAX_SPEED * delta)
@@ -69,11 +73,11 @@ func attack_state():
 	state = MOVE
 	velocity = Vector2.ZERO
 
-	var new_item_pos = self.position + (animation_tree.get("parameters/idle/blend_position") * 20)
+	var new_item_pos = position + (animation_tree.get("parameters/idle/blend_position") * TILE_SIZE)
 
 	# Check if new position is not colliding with anything
 	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_ray(self.position, new_item_pos)
+	var result = space_state.intersect_ray(position, new_item_pos)
 	if !result:
 		var item = ItemRes.instance()
 		item.position = new_item_pos
