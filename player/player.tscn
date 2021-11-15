@@ -226,7 +226,6 @@ vframes = 20
 frame = 74
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1 )
 shape = SubResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

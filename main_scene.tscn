@@ -16,7 +16,7 @@ _data = {
 [node name="Tutorial001" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 24, 39 )
+position = Vector2( 24, 40 )
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 0, 48 )

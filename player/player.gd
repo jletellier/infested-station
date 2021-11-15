@@ -9,13 +9,15 @@ export var FRICTION = 1000
 
 enum {
 	MOVE,
-	ATTACK
+	ATTACK,
 }
 
 const ItemRes = preload("res://items/item.tscn")
+const TILE_SIZE = 16
 
 var state = MOVE
 var velocity = Vector2.ZERO
+var snapped_position = Vector2.ZERO
 
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
@@ -45,10 +47,17 @@ func move_state(delta):
 		animation_tree.set("parameters/idle/blend_position", input_vector)
 		animation_tree.set("parameters/walk/blend_position", input_vector)
 		animation_state.travel("walk")
+		snapped_position = Vector2.ZERO
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
+		if snapped_position == Vector2.ZERO:
+			snapped_position = (
+				position.snapped(Vector2.ONE * TILE_SIZE) + (Vector2.ONE * TILE_SIZE / 2))
+		
 		animation_state.travel("idle")
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		position = position.move_toward(snapped_position, MAX_SPEED * delta)
+		velocity = Vector2.ZERO
+		# velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	move()
 
