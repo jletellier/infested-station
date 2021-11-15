@@ -9,7 +9,7 @@ export var FRICTION = 1000
 
 enum {
 	MOVE,
-	ATTACK,
+	PLACE,
 }
 
 const ItemRes = preload("res://items/item.tscn")
@@ -33,8 +33,8 @@ func _physics_process(delta):
 	match state:
 		MOVE:
 			move_state(delta)
-		ATTACK:
-			attack_state()
+		PLACE:
+			place_state()
 
 			
 func move_state(delta):
@@ -63,17 +63,17 @@ func move_state(delta):
 		velocity = Vector2.ZERO
 		# velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
-	move()
+		if Input.is_action_just_pressed("ui_accept"):
+			state = PLACE
 
-	if Input.is_action_just_pressed("ui_accept"):
-		state = ATTACK
+	velocity = move_and_slide(velocity)
 
 
-func attack_state():
+func place_state():
 	state = MOVE
-	velocity = Vector2.ZERO
 
-	var new_item_pos = position + (animation_tree.get("parameters/idle/blend_position") * TILE_SIZE)
+	var new_item_pos = (
+		snapped_position + (animation_tree.get("parameters/idle/blend_position") * TILE_SIZE))
 
 	# Check if new position is not colliding with anything
 	var space_state = get_world_2d().direct_space_state
@@ -82,7 +82,3 @@ func attack_state():
 		var item = ItemRes.instance()
 		item.position = new_item_pos
 		self.get_parent().add_child(item)
-
-
-func move():
-	velocity = move_and_slide(velocity)
