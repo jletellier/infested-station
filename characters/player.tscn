@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://external_resources/Premade_Character_05.png" type="Texture" id=2]
 [ext_resource path="res://characters/player_control.gd" type="Script" id=3]
+[ext_resource path="res://characters/health_system.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
@@ -217,6 +218,7 @@ start_node = "idle"
 [node name="Player" type="Node"]
 
 [node name="Character" type="KinematicBody2D" parent="."]
+collision_mask = 3
 collision/safe_margin = 0.4
 script = ExtResource( 1 )
 
@@ -250,3 +252,6 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="CharacterControl" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource( 4 )

@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/follow_path.gd" type="Script" id=2]
 [ext_resource path="res://external_resources/full_100_nature_things.png" type="Texture" id=3]
 [ext_resource path="res://characters/health_system.gd" type="Script" id=4]
+[ext_resource path="res://characters/attack_system.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
@@ -120,9 +121,13 @@ graph_offset = Vector2( 29, 114 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
+[sub_resource type="CircleShape2D" id=27]
+radius = 12.0
+
 [node name="Spider" type="Node"]
 
 [node name="Character" type="KinematicBody2D" parent="."]
+collision_layer = 2
 collision/safe_margin = 0.4
 script = ExtResource( 1 )
 ACCELERATION = 200
@@ -130,7 +135,6 @@ MAX_SPEED = 20
 
 [node name="Sprite" type="Sprite" parent="Character"]
 texture = ExtResource( 3 )
-offset = Vector2( 0, -1 )
 hframes = 10
 vframes = 13
 frame = 118
@@ -155,8 +159,19 @@ parameters/playback = SubResource( 25 )
 parameters/idle/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
+[node name="HitBox" type="Area2D" parent="Character"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/HitBox"]
+shape = SubResource( 27 )
+
 [node name="FollowPath" type="Node" parent="."]
 script = ExtResource( 2 )
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource( 4 )
+
+[node name="AttackSystem" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[connection signal="body_entered" from="Character/HitBox" to="AttackSystem" method="_on_HitBox_body_entered"]
