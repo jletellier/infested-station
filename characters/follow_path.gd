@@ -1,8 +1,10 @@
 extends Node
 
+export(NodePath) var path
+
 var direction = 1
 
-onready var path_follow_2d = $"../Path2D/PathFollow2D"
+onready var path_follow_2d = get_node(path)
 onready var character = $"../Character"
 
 
