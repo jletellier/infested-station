@@ -1,7 +1,7 @@
 extends Node
 
 export var strength = 100
-export var cooldown = 1
+export var cooldown = 0.5
 
 var target_health_system = null
 var last_hit_delta = cooldown

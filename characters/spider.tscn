@@ -122,12 +122,13 @@ graph_offset = Vector2( 29, 114 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
 [sub_resource type="CircleShape2D" id=27]
-radius = 11.0
+radius = 8.0
 
 [node name="Spider" type="Node"]
 
 [node name="Character" type="KinematicBody2D" parent="."]
 collision_layer = 2
+collision_mask = 3
 collision/safe_margin = 0.4
 script = ExtResource( 1 )
 ACCELERATION = 200
@@ -160,7 +161,7 @@ parameters/idle/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="HitBox" type="Area2D" parent="Character"]
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character/HitBox"]
 shape = SubResource( 27 )
