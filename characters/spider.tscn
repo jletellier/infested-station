@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/follow_path.gd" type="Script" id=2]
 [ext_resource path="res://external_resources/full_100_nature_things.png" type="Texture" id=3]
+[ext_resource path="res://characters/health_system.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
@@ -156,3 +157,6 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="FollowPath" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource( 4 )
