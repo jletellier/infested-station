@@ -1,9 +1,9 @@
-extends Node2D
+extends Node
 
 var direction = 1
 
-onready var path_follow_2d = $Path2D/PathFollow2D
-onready var character = $Character
+onready var path_follow_2d = $"../Path2D/PathFollow2D"
+onready var character = $"../Character"
 
 
 func _physics_process(delta):
