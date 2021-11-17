@@ -218,7 +218,8 @@ start_node = "idle"
 [node name="Player" type="Node"]
 
 [node name="Character" type="KinematicBody2D" parent="."]
-collision_mask = 3
+collision_layer = 2
+collision_mask = 7
 collision/safe_margin = 0.4
 script = ExtResource( 1 )
 
