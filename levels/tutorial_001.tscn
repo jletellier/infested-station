@@ -1,18 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/elevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/ladybug.tscn" type="PackedScene" id=3]
+[ext_resource path="res://external_resources/Living_Room_Singles_Shadowless_13.png" type="Texture" id=4]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://external_resources/Hospital_Singles_Shadowless_119.png" type="Texture" id=6]
 
 [sub_resource type="Curve2D" id=75]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 104, 184, 0, 0, 0, 0, 184, 184, 0, 0, 0, 0, 184, 154 )
+"points": PoolVector2Array( 0, 0, 0, 0, 56, 200, 0, 0, 0, 0, 136, 200, 0, 0, 0, 0, 136, 168 )
 }
 
 [sub_resource type="Curve2D" id=77]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 232, 136, 0, 0, 0, 0, 185, 136 )
+"points": PoolVector2Array( 0, 0, 0, 0, 184, 152, 0, 0, 0, 0, 136, 152 )
 }
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=80]
@@ -20,6 +22,12 @@ _data = {
 [sub_resource type="AnimationNodeStateMachinePlayback" id=81]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=82]
+
+[sub_resource type="CircleShape2D" id=83]
+radius = 7.5
+
+[sub_resource type="RectangleShape2D" id=84]
+extents = Vector2( 16, 8 )
 
 [node name="Tutorial001" type="Node2D"]
 
@@ -29,19 +37,19 @@ cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 65540, 1, 65542, 65541, 1, 131081, 65542, 1, 131083, 65543, 1, 65544, 131076, 1, 0, 131077, 3, 0, 131078, 3, 0, 131079, 0, 1, 131080, 0, 1, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 1, 65544, 196612, 1, 0, 196613, 3, 0, 196614, 3, 0, 196615, 0, 65537, 196616, 0, 65537, 196617, 0, 65537, 196618, 0, 65537, 196619, 0, 65537, 196620, 1, 131080, 262148, 1, 0, 262149, 4, 0, 262150, 4, 0, 262151, 4, 0, 262152, 4, 0, 262153, 4, 0, 262154, 4, 0, 262155, 4, 0, 262156, 1, 131080, 327684, 1, 196614, 327685, 1, 196615, 327686, 1, 196615, 327687, 1, 196615, 327688, 1, 196615, 327689, 1, 196615, 327690, 1, 131072, 327691, 4, 0, 327692, 1, 131080, 393226, 1, 131078, 393227, 4, 0, 393228, 0, 0, 393229, 0, 1, 393230, 0, 1, 393231, 1, 65544, 458762, 1, 131078, 458763, 4, 0, 458764, 0, 65536, 458765, 0, 65537, 458766, 0, 65537, 458767, 1, 131080, 524291, 1, 65542, 524292, 1, 131081, 524293, 1, 131083, 524294, 1, 65544, 524298, 1, 131078, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 1, 131080, 589827, 1, 0, 589828, 3, 0, 589829, 3, 0, 589830, 0, 1, 589831, 0, 1, 589832, 0, 1, 589833, 0, 1, 589834, 0, 2, 589835, 4, 0, 589836, 1, 131073, 589837, 1, 196615, 589838, 1, 65543, 589839, 1, 196616, 655363, 1, 0, 655364, 3, 0, 655365, 3, 0, 655366, 0, 65537, 655367, 0, 65537, 655368, 0, 65537, 655369, 0, 65537, 655370, 0, 65538, 655371, 4, 0, 655372, 1, 131080, 720899, 1, 0, 720900, 4, 0, 720901, 4, 0, 720902, 4, 0, 720903, 4, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 1, 131080, 786435, 1, 196614, 786436, 1, 196615, 786437, 1, 196615, 786438, 1, 196615, 786439, 1, 196615, 786440, 1, 196615, 786441, 1, 196615, 786442, 1, 196615, 786443, 1, 196615, 786444, 1, 196616 )
+tile_data = PoolIntArray( 0, 1, 65542, 1, 1, 131081, 2, 1, 131083, 3, 1, 65544, 65536, 1, 0, 65537, 3, 0, 65538, 3, 0, 65539, 0, 1, 65540, 0, 1, 65541, 0, 1, 65542, 0, 1, 65543, 0, 1, 65544, 0, 1, 65545, 1, 65544, 131072, 1, 0, 131073, 3, 0, 131074, 3, 0, 131075, 0, 65537, 131076, 0, 65537, 131077, 0, 65537, 131078, 0, 65537, 131079, 0, 65537, 131080, 0, 65537, 131081, 1, 131080, 196608, 1, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 4, 0, 196613, 4, 0, 196614, 4, 0, 196615, 4, 0, 196616, 4, 0, 196617, 1, 131080, 262144, 1, 0, 262145, 4, 0, 262146, 4, 0, 262147, 4, 0, 262148, 4, 0, 262149, 4, 0, 262150, 4, 0, 262151, 4, 0, 262152, 4, 0, 262153, 1, 131080, 327680, 1, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 1, 131080, 393216, 1, 196614, 393217, 1, 196615, 393218, 1, 196615, 393219, 1, 196615, 393220, 1, 196615, 393221, 1, 196615, 393222, 1, 196615, 393223, 1, 65540, 393224, 4, 0, 393225, 1, 131080, 458759, 1, 131078, 458760, 4, 0, 458761, 0, 0, 458762, 0, 1, 458763, 0, 1, 458764, 1, 65544, 524295, 1, 131078, 524296, 4, 0, 524297, 0, 65536, 524298, 0, 65537, 524299, 0, 65537, 524300, 1, 131080, 589824, 1, 65542, 589825, 1, 131081, 589826, 1, 131083, 589827, 1, 65544, 589831, 1, 131078, 589832, 4, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 1, 131080, 655360, 1, 0, 655361, 3, 0, 655362, 3, 0, 655363, 0, 1, 655364, 0, 1, 655365, 0, 1, 655366, 0, 1, 655367, 0, 2, 655368, 4, 0, 655369, 1, 131073, 655370, 1, 196615, 655371, 1, 65543, 655372, 1, 196616, 720896, 1, 0, 720897, 3, 0, 720898, 3, 0, 720899, 0, 65537, 720900, 0, 65537, 720901, 0, 65537, 720902, 0, 65537, 720903, 0, 65538, 720904, 4, 0, 720905, 1, 131080, 786432, 1, 0, 786433, 4, 0, 786434, 4, 0, 786435, 4, 0, 786436, 4, 0, 786437, 4, 0, 786438, 4, 0, 786439, 4, 0, 786440, 4, 0, 786441, 1, 131080, 851968, 1, 196614, 851969, 1, 196615, 851970, 1, 196615, 851971, 1, 196615, 851972, 1, 196615, 851973, 1, 196615, 851974, 1, 196615, 851975, 1, 196615, 851976, 1, 196615, 851977, 1, 196616 )
 
 [node name="Elevator" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, 32 )
+position = Vector2( 16, 16 )
 
 [node name="Elevator2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 64, 144 )
+position = Vector2( 16, 160 )
 
 [node name="EnemyPath1" type="Path2D" parent="."]
 curve = SubResource( 75 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath1"]
-position = Vector2( 104, 184 )
+position = Vector2( 56, 200 )
 cubic_interp = false
 loop = false
 lookahead = 0.001
@@ -50,7 +58,7 @@ lookahead = 0.001
 curve = SubResource( 77 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath2"]
-position = Vector2( 232, 136 )
+position = Vector2( 184, 152 )
 rotation = 3.14159
 cubic_interp = false
 loop = false
@@ -59,13 +67,19 @@ lookahead = 0.001
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 104, 72 )
+position = Vector2( 40, 56 )
 
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 80 )
 
+[node name="Camera2D" parent="YSort/Player" index="6"]
+limit_left = -32
+limit_top = -32
+limit_right = 288
+limit_bottom = 242
+
 [node name="Ladybug1" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 104, 184 )
+position = Vector2( 56, 200 )
 
 [node name="AnimationTree" parent="YSort/Ladybug1" index="3"]
 parameters/playback = SubResource( 81 )
@@ -74,13 +88,35 @@ parameters/playback = SubResource( 81 )
 path = NodePath("../../../EnemyPath1/PathFollow2D")
 
 [node name="Ladybug2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 232, 136 )
+position = Vector2( 184, 152 )
 
 [node name="AnimationTree" parent="YSort/Ladybug2" index="3"]
 parameters/playback = SubResource( 82 )
 
 [node name="FollowPath" parent="YSort/Ladybug2" index="5"]
 path = NodePath("../../../EnemyPath2/PathFollow2D")
+
+[node name="Tree" type="StaticBody2D" parent="YSort"]
+position = Vector2( 72, 56 )
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="YSort/Tree"]
+position = Vector2( 0, -10 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Tree"]
+shape = SubResource( 83 )
+
+[node name="VendingMachine" type="StaticBody2D" parent="YSort"]
+position = Vector2( 96, 56 )
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="YSort/VendingMachine"]
+position = Vector2( 1, -12 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/VendingMachine"]
+shape = SubResource( 84 )
 
 [editable path="YSort/Player"]
 [editable path="YSort/Ladybug1"]
