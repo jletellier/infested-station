@@ -2,7 +2,7 @@
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/elevator.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/spider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/ladybug.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=75]
@@ -17,9 +17,9 @@ _data = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=80]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=78]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=81]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=79]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=82]
 
 [node name="Tutorial001" type="Node2D"]
 
@@ -37,19 +37,19 @@ position = Vector2( 80, 32 )
 [node name="Elevator2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 64, 144 )
 
-[node name="SpiderPath" type="Path2D" parent="."]
+[node name="EnemyPath1" type="Path2D" parent="."]
 curve = SubResource( 75 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SpiderPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath1"]
 position = Vector2( 104, 184 )
 cubic_interp = false
 loop = false
 lookahead = 0.001
 
-[node name="Spider2Path" type="Path2D" parent="."]
+[node name="EnemyPath2" type="Path2D" parent="."]
 curve = SubResource( 77 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Spider2Path"]
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath2"]
 position = Vector2( 232, 136 )
 rotation = 3.14159
 cubic_interp = false
@@ -64,24 +64,24 @@ position = Vector2( 104, 72 )
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 80 )
 
-[node name="Spider" parent="YSort" instance=ExtResource( 4 )]
+[node name="Ladybug1" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 104, 184 )
 
-[node name="AnimationTree" parent="YSort/Spider" index="3"]
-parameters/playback = SubResource( 78 )
+[node name="AnimationTree" parent="YSort/Ladybug1" index="3"]
+parameters/playback = SubResource( 81 )
 
-[node name="FollowPath" parent="YSort/Spider" index="5"]
-path = NodePath("../../../SpiderPath/PathFollow2D")
+[node name="FollowPath" parent="YSort/Ladybug1" index="5"]
+path = NodePath("../../../EnemyPath1/PathFollow2D")
 
-[node name="Spider2" parent="YSort" instance=ExtResource( 4 )]
+[node name="Ladybug2" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 232, 136 )
 
-[node name="AnimationTree" parent="YSort/Spider2" index="3"]
-parameters/playback = SubResource( 79 )
+[node name="AnimationTree" parent="YSort/Ladybug2" index="3"]
+parameters/playback = SubResource( 82 )
 
-[node name="FollowPath" parent="YSort/Spider2" index="5"]
-path = NodePath("../../../Spider2Path/PathFollow2D")
+[node name="FollowPath" parent="YSort/Ladybug2" index="5"]
+path = NodePath("../../../EnemyPath2/PathFollow2D")
 
 [editable path="YSort/Player"]
-[editable path="YSort/Spider"]
-[editable path="YSort/Spider2"]
+[editable path="YSort/Ladybug1"]
+[editable path="YSort/Ladybug2"]

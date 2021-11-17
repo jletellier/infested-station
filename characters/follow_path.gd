@@ -18,6 +18,7 @@ func _physics_process(delta):
 	path_direction = path_direction * direction
 
 	var oldPosition = character.position
+	character.rotation = path_direction.angle()
 	character.move(delta, path_direction)
 	var currentPosition = character.position
 	var distance = currentPosition.distance_to(oldPosition)

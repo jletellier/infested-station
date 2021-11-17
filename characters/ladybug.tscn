@@ -122,9 +122,9 @@ graph_offset = Vector2( 29, 114 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
 [sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 20, 8 )
+extents = Vector2( 8, 8 )
 
-[node name="Spider" type="KinematicBody2D"]
+[node name="Ladybug" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 7
 collision/safe_margin = 0.4
@@ -137,7 +137,7 @@ rotation = 1.5708
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 13
-frame = 118
+frame = 110
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 24 )
@@ -164,7 +164,6 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( 20, 0 )
 shape = SubResource( 27 )
 
 [node name="FollowPath" type="Node" parent="."]
@@ -175,7 +174,6 @@ script = ExtResource( 4 )
 
 [node name="AttackSystem" type="Node" parent="."]
 script = ExtResource( 5 )
-strength = 50
 
 [connection signal="body_entered" from="HitBox" to="AttackSystem" method="_on_HitBox_body_entered"]
 [connection signal="body_exited" from="HitBox" to="AttackSystem" method="_on_HitBox_body_exited"]
