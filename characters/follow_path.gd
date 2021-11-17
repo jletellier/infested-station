@@ -5,7 +5,7 @@ export(NodePath) var path
 var direction = 1
 
 onready var path_follow_2d = get_node(path)
-onready var character = $"../Character"
+onready var character = get_parent()
 
 
 func _physics_process(delta):

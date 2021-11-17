@@ -10,7 +10,7 @@ const TILE_SIZE = 16
 
 var state = MOVE
 
-onready var character = $"../Character"
+onready var character = get_parent()
 
 
 func _physics_process(delta):
@@ -46,4 +46,4 @@ func place_state():
 	if !result:
 		var item = ItemRes.instance()
 		item.position = new_item_pos
-		self.get_parent().get_parent().add_child(item)
+		character.get_parent().add_child(item)

@@ -6,17 +6,17 @@ export var cooldown = 0.5
 var target_health_system = null
 var last_hit_delta = cooldown
 
-onready var character = $"../Character"
+onready var character = get_parent()
 
 
 func _on_HitBox_body_entered(body: Node):
-	var health_system = body.get_node_or_null("../HealthSystem")
+	var health_system = body.get_node_or_null("HealthSystem")
 	if health_system:
 		target_health_system = health_system
 
 
 func _on_HitBox_body_exited(body: Node):
-	var health_system = body.get_node_or_null("../HealthSystem")
+	var health_system = body.get_node_or_null("HealthSystem")
 	if health_system == target_health_system:
 		target_health_system = null
 

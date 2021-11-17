@@ -124,9 +124,7 @@ graph_offset = Vector2( 29, 114 )
 [sub_resource type="CircleShape2D" id=27]
 radius = 8.0
 
-[node name="Spider" type="Node"]
-
-[node name="Character" type="KinematicBody2D" parent="."]
+[node name="Spider" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 7
 collision/safe_margin = 0.4
@@ -134,16 +132,16 @@ script = ExtResource( 1 )
 ACCELERATION = 200
 MAX_SPEED = 20
 
-[node name="Sprite" type="Sprite" parent="Character"]
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 13
 frame = 118
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 24 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_down = SubResource( 2 )
 anims/idle_left = SubResource( 3 )
 anims/idle_right = SubResource( 4 )
@@ -153,18 +151,18 @@ anims/walk_left = SubResource( 8 )
 anims/walk_right = SubResource( 6 )
 anims/walk_up = SubResource( 9 )
 
-[node name="AnimationTree" type="AnimationTree" parent="Character"]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 25 )
 parameters/idle/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
-[node name="HitBox" type="Area2D" parent="Character"]
+[node name="HitBox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource( 27 )
 
 [node name="FollowPath" type="Node" parent="."]
@@ -177,5 +175,5 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 strength = 50
 
-[connection signal="body_entered" from="Character/HitBox" to="AttackSystem" method="_on_HitBox_body_entered"]
-[connection signal="body_exited" from="Character/HitBox" to="AttackSystem" method="_on_HitBox_body_exited"]
+[connection signal="body_entered" from="HitBox" to="AttackSystem" method="_on_HitBox_body_entered"]
+[connection signal="body_exited" from="HitBox" to="AttackSystem" method="_on_HitBox_body_exited"]
