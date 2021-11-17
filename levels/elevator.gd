@@ -1,15 +1,32 @@
 extends Node2D
 
-var is_open = false
+export var open = false
 
 onready var door_sprite = $DoorSprite
 
 
+func _ready():
+	update_open()
+
+
 func _on_InsideArea_body_entered(_body: Node):
-	door_sprite.z_index = 1
-	door_sprite.animation = "close"
+	pass
 
 
 func _on_OutsideArea_body_entered(_body: Node):
-    door_sprite.z_index = 0
-    door_sprite.animation = "open"
+	open = true
+	update_open()
+
+
+func _on_OutsideArea_body_exited(_body: Node):
+	open = false
+	update_open()
+
+
+func update_open():
+	if open:
+		door_sprite.z_index = 0
+		door_sprite.animation = "open"
+	else:
+		door_sprite.z_index = 1
+		door_sprite.animation = "close"

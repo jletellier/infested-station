@@ -91,12 +91,13 @@ script = ExtResource( 2 )
 
 [node name="DoorSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 94 )
-animation = "open"
+animation = "close"
 frame = 7
 playing = true
 centered = false
 
 [node name="OutsideArea" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideArea"]
 position = Vector2( 16, 40 )
@@ -110,4 +111,5 @@ position = Vector2( 16, 16 )
 shape = SubResource( 96 )
 
 [connection signal="body_entered" from="OutsideArea" to="." method="_on_OutsideArea_body_entered"]
+[connection signal="body_exited" from="OutsideArea" to="." method="_on_OutsideArea_body_exited"]
 [connection signal="body_entered" from="InsideArea" to="." method="_on_InsideArea_body_entered"]

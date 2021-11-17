@@ -18,6 +18,6 @@ shape = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 22
-frame = 145
+frame = 207
 
 [connection signal="body_entered" from="." to="." method="_on_Item_body_entered" flags=6]
