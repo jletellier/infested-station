@@ -1,7 +1,100 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://levels/level_001.tscn" type="PackedScene" id=1]
+[ext_resource path="res://external_resources/ui_item_slot.png" type="Texture" id=2]
+[ext_resource path="res://external_resources/ui_item_count.png" type="Texture" id=3]
+[ext_resource path="res://ui/font_m5x7.tres" type="DynamicFont" id=4]
+[ext_resource path="res://external_resources/Sprite-RPG_items-icons_16x16.png" type="Texture" id=5]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Level001" parent="." instance=ExtResource( 1 )]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlots" type="GridContainer" parent="HUD/CenterContainer"]
+margin_left = 144.0
+margin_right = 176.0
+margin_bottom = 32.0
+columns = 2
+
+[node name="Slot1" type="TextureRect" parent="HUD/CenterContainer/ItemSlots"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="HUD/CenterContainer/ItemSlots/Slot1"]
+position = Vector2( 16, 16 )
+texture = ExtResource( 5 )
+hframes = 32
+vframes = 22
+frame = 207
+
+[node name="Count" type="TextureRect" parent="HUD/CenterContainer/ItemSlots/Slot1"]
+margin_left = -2.0
+margin_top = -2.0
+texture = ExtResource( 3 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="HUD/CenterContainer/ItemSlots/Slot1/Count"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 1.0
+custom_colors/default_color = Color( 0.207843, 0.207843, 0.337255, 1 )
+custom_fonts/normal_font = ExtResource( 4 )
+text = "2"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="TextureRect" parent="HUD/CenterContainer/ItemSlots"]
+visible = false
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Count" type="TextureRect" parent="HUD/CenterContainer/ItemSlots/Slot2"]
+visible = false
+margin_left = -2.0
+margin_top = -2.0
+texture = ExtResource( 3 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="HUD/CenterContainer/ItemSlots/Slot2/Count"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 1.0
+custom_colors/default_color = Color( 0.207843, 0.207843, 0.337255, 1 )
+custom_fonts/normal_font = ExtResource( 4 )
+text = "2"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
