@@ -1,22 +1,23 @@
 extends StaticBody2D
 
-export var open: bool = false
+export var _open: bool = false
 
 onready var door_sprite := $DoorSprite as AnimatedSprite
 onready var collision_shape := $CollisionShape2D as CollisionShape2D
 
 
 func _ready() -> void:
-	_update_open()
+	update_open(_open)
 
 
-func _update_open() -> void:
+func update_open(open: bool) -> void:
+	_open = open
 	if open:
 		door_sprite.animation = "open"
-		collision_shape.disabled = true
+		collision_shape.call_deferred("set", "disabled", true);
 	else:
 		door_sprite.animation = "close"
-		collision_shape.disabled = false
+		collision_shape.call_deferred("set", "disabled", false);
 
 
 func _on_InsideArea_body_entered(_body: Node) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -56,6 +56,114 @@ _data = {
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 376, 504, 0, 0, 0, 0, 408, 504 )
 }
+
+[sub_resource type="VisualScriptFunction" id=17]
+resource_name = "_on_TriggerDialog2_body_entered"
+argument_count = 1
+argument_1/type = 0
+argument_1/name = "body"
+
+[sub_resource type="VisualScriptFunctionCall" id=19]
+_default_input_values = [ NodePath("../YSort/DoorHorizontal") ]
+base_type = "Area2D"
+argument_cache = {
+"args": [ {
+"class_name": "",
+"hint": 0,
+"hint_string": "",
+"name": "path",
+"type": 15,
+"usage": 7
+} ],
+"default_args": [  ],
+"flags": 9,
+"id": 0,
+"name": "",
+"return": {
+"class_name": "Node",
+"hint": 0,
+"hint_string": "",
+"name": "",
+"type": 17,
+"usage": 7
+}
+}
+function = "get_node"
+
+[sub_resource type="VisualScriptFunctionCall" id=20]
+_default_input_values = [ null, true ]
+call_mode = 2
+base_type = "Area2D"
+base_script = "res://levels/door.gd"
+argument_cache = {
+"args": [ {
+"class_name": "",
+"hint": 0,
+"hint_string": "",
+"name": "",
+"type": 1,
+"usage": 7
+} ],
+"default_args": [  ],
+"flags": 1,
+"id": 0,
+"name": "update_open",
+"return": {
+"class_name": "",
+"hint": 0,
+"hint_string": "",
+"name": "",
+"type": 0,
+"usage": 7
+}
+}
+function = "update_open"
+
+[sub_resource type="VisualScriptFunctionCall" id=21]
+base_type = "Area2D"
+argument_cache = {
+"args": [  ],
+"default_args": [  ],
+"flags": 1,
+"id": 0,
+"name": "",
+"return": {
+"class_name": "",
+"hint": 0,
+"hint_string": "",
+"name": "",
+"type": 0,
+"usage": 7
+}
+}
+function = "queue_free"
+
+[sub_resource type="VisualScript" id=15]
+data = {
+"base_type": "Area2D",
+"functions": [ {
+"data_connections": [  ],
+"function_id": -1,
+"name": "f_312843592",
+"nodes": [  ],
+"scroll": Vector2( -32.0868, -309.271 ),
+"sequence_connections": [  ]
+}, {
+"data_connections": [ 3, 0, 4, 0 ],
+"function_id": 0,
+"name": "_on_TriggerDialog2_body_entered",
+"nodes": [ 0, Vector2( 13.3333, 0 ), SubResource( 17 ), 3, Vector2( 80, 120 ), SubResource( 19 ), 4, Vector2( 413.333, 0 ), SubResource( 20 ), 5, Vector2( 746.667, 0 ), SubResource( 21 ) ],
+"scroll": Vector2( -300, -277.5 ),
+"sequence_connections": [ 0, 0, 4, 4, 0, 5 ]
+} ],
+"is_tool_script": false,
+"signals": [  ],
+"variables": [  ],
+"vs_unify": true
+}
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 8, 8 )
 
 [node name="Level001" type="Node2D"]
 
@@ -175,7 +283,6 @@ shape = SubResource( 14 )
 
 [node name="ElevatorStart" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 144, 264 )
-open = true
 
 [node name="ElevatorEnd" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 448, 472 )
@@ -201,6 +308,17 @@ curve = SubResource( 10 )
 
 [node name="EnemyPath6" type="Path2D" parent="."]
 curve = SubResource( 13 )
+
+[node name="TriggerDialog2" type="Area2D" parent="."]
+position = Vector2( 136, 472 )
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDialog2"]
+shape = SubResource( 16 )
+
+[connection signal="body_entered" from="TriggerDialog2" to="TriggerDialog2" method="_on_TriggerDialog2_body_entered"]
 
 [editable path="YSort/Enemy1"]
 [editable path="YSort/Enemy2"]
