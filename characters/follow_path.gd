@@ -1,19 +1,21 @@
 extends Node
 
-export(NodePath) var path
+const Character := preload("res://characters/character.gd")
 
-var direction = 1
+export var path := NodePath()
 
-onready var path_follow_2d = get_node(path)
-onready var character = get_parent()
+var direction: int = 1
+
+onready var path_follow_2d := get_node(path) as PathFollow2D
+onready var character := get_parent() as Character
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if path_follow_2d.unit_offset >= 0.99 && direction == 1:
 		direction = -1
 	elif path_follow_2d.unit_offset <= 0.01 && direction == -1:
 		direction = 1
-	
+
 	var path_direction = Vector2(cos(path_follow_2d.rotation), sin(path_follow_2d.rotation))
 	path_direction = path_direction * direction
 
