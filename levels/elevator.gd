@@ -11,22 +11,22 @@ func _ready() -> void:
 
 func _update_open() -> void:
 	if open:
-		door_sprite.z_index = 0
 		door_sprite.animation = "open"
 	else:
-		door_sprite.z_index = 1
 		door_sprite.animation = "close"
 
 
 func _on_InsideArea_body_entered(_body: Node) -> void:
-	pass
+	door_sprite.z_index = 1
+	# open = true
+	# _update_open()
 
 
 func _on_OutsideArea_body_entered(_body: Node) -> void:
-	open = true
-	_update_open()
+	door_sprite.z_index = 0
+	# open = true
+	# _update_open()
 
 
 func _on_OutsideArea_body_exited(_body: Node) -> void:
-	open = false
-	_update_open()
+	pass
