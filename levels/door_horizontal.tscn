@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://external_resources/animated_door_big_5.png" type="Texture" id=1]
-[ext_resource path="res://levels/elevator.gd" type="Script" id=2]
+[ext_resource path="res://levels/door.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=97]
 atlas = ExtResource( 1 )
@@ -56,34 +56,41 @@ animations = [ {
 "speed": 12.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=108]
+extents = Vector2( 8, 8 )
+
 [sub_resource type="RectangleShape2D" id=95]
 extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=96]
 extents = Vector2( 8, 8 )
 
-[node name="DoorHorizontal" type="Node2D"]
+[node name="DoorHorizontal" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="DoorSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -8, -40 )
 frames = SubResource( 107 )
 animation = "close"
 frame = 4
 playing = true
 centered = false
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 108 )
+
 [node name="OutsideArea" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideArea"]
-position = Vector2( 8, 55 )
+position = Vector2( 0, 16 )
 shape = SubResource( 95 )
 
 [node name="InsideArea" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InsideArea"]
-position = Vector2( 8, 39 )
 shape = SubResource( 96 )
 
 [connection signal="body_entered" from="OutsideArea" to="." method="_on_OutsideArea_body_entered"]
