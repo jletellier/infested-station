@@ -12,7 +12,6 @@ config_version=4
 
 config/name="infested-station"
 run/main_scene="res://main_scene.tscn"
-config/icon="res://icon.png"
 
 [display]
 

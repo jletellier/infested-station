@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://levels/level_001.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tutorial_001.tscn" type="PackedScene" id=2]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Tutorial001" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Level001" parent="." instance=ExtResource( 1 )]
