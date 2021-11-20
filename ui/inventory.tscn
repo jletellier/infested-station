@@ -17,12 +17,12 @@ __meta__ = {
 }
 
 [node name="ItemSlots" type="GridContainer" parent="."]
-margin_left = 144.0
-margin_right = 176.0
+margin_left = 108.0
+margin_right = 212.0
 margin_bottom = 32.0
-columns = 2
+columns = 3
 
-[node name="Slot1" type="TextureRect" parent="ItemSlots"]
+[node name="Keys" type="TextureRect" parent="ItemSlots"]
 margin_right = 32.0
 margin_bottom = 32.0
 texture = ExtResource( 5 )
@@ -31,14 +31,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="ItemSlots/Slot1"]
+[node name="Sprite" type="Sprite" parent="ItemSlots/Keys"]
 position = Vector2( 16, 16 )
 texture = ExtResource( 3 )
 hframes = 32
 vframes = 22
-frame = 207
+frame = 79
 
-[node name="Count" type="TextureRect" parent="ItemSlots/Slot1"]
+[node name="Count" type="TextureRect" parent="ItemSlots/Keys"]
 margin_left = -2.0
 margin_top = -2.0
 texture = ExtResource( 4 )
@@ -47,7 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="RichTextLabel" parent="ItemSlots/Slot1/Count"]
+[node name="Label" type="RichTextLabel" parent="ItemSlots/Keys/Count"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -60,8 +60,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot2" type="TextureRect" parent="ItemSlots"]
-visible = false
+[node name="Coins" type="TextureRect" parent="ItemSlots"]
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
@@ -71,7 +70,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Count" type="TextureRect" parent="ItemSlots/Slot2"]
+[node name="Sprite" type="Sprite" parent="ItemSlots/Coins"]
+position = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+hframes = 32
+vframes = 22
+frame = 17
+
+[node name="Count" type="TextureRect" parent="ItemSlots/Coins"]
 margin_left = -2.0
 margin_top = -2.0
 texture = ExtResource( 4 )
@@ -80,7 +86,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="RichTextLabel" parent="ItemSlots/Slot2/Count"]
+[node name="Label" type="RichTextLabel" parent="ItemSlots/Coins/Count"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 1.0
+custom_colors/default_color = Color( 0.207843, 0.207843, 0.337255, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+text = "2"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Poisons" type="TextureRect" parent="ItemSlots"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+texture = ExtResource( 5 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="ItemSlots/Poisons"]
+position = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+hframes = 32
+vframes = 22
+frame = 207
+
+[node name="Count" type="TextureRect" parent="ItemSlots/Poisons"]
+margin_left = -2.0
+margin_top = -2.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="ItemSlots/Poisons/Count"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0

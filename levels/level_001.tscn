@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://external_resources/Living_Room_Singles_Shadowless_13.png" type="Texture" id=5]
 [ext_resource path="res://external_resources/Hospital_Singles_Shadowless_119.png" type="Texture" id=6]
 [ext_resource path="res://levels/door_horizontal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://items/key_item.tscn" type="PackedScene" id=8]
+[ext_resource path="res://items/coin_item.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -237,17 +239,6 @@ parameters/playback = SubResource( 12 )
 [node name="FollowPath" parent="YSort/Enemy6" index="5"]
 path = NodePath("../../../EnemyPath6")
 
-[node name="Tree" type="StaticBody2D" parent="YSort"]
-position = Vector2( 136, 504 )
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="YSort/Tree"]
-position = Vector2( 0, -10 )
-texture = ExtResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Tree"]
-shape = SubResource( 11 )
-
 [node name="Tree2" type="StaticBody2D" parent="YSort"]
 position = Vector2( 472, 520 )
 collision_mask = 0
@@ -290,6 +281,27 @@ position = Vector2( 448, 472 )
 [node name="DoorHorizontal" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 264, 264 )
 
+[node name="KeyItem" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 136, 504 )
+
+[node name="CoinItem" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 280, 216 )
+
+[node name="CoinItem2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 296, 504 )
+
+[node name="CoinItem3" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 312, 504 )
+
+[node name="CoinItem4" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 328, 504 )
+
+[node name="CoinItem5" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 424, 520 )
+
+[node name="CoinItem6" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 424, 488 )
+
 [node name="EnemyPath1" type="Path2D" parent="."]
 curve = SubResource( 2 )
 
@@ -313,6 +325,7 @@ curve = SubResource( 13 )
 position = Vector2( 136, 472 )
 collision_layer = 0
 collision_mask = 2
+monitoring = false
 script = SubResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDialog2"]

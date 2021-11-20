@@ -1,11 +1,13 @@
 extends Area2D
 
-const HealthSystem := preload("res://characters/health_system.gd")
+const Inventory := preload("res://ui/inventory.gd")
+
+export var _item_idx: int = 0
+
+onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
 
 
-func _on_Item_body_entered(body: Node) -> void:
-	var health_system := body.get_node_or_null("HealthSystem") as HealthSystem
-	if health_system:
-		health_system.take_damage(100)
+func _on_Item_body_entered(_body: Node):
+	_inventory.increment_item_count(_item_idx, 1)
 
 	queue_free()

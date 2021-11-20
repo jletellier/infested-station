@@ -1,7 +1,7 @@
 extends CenterContainer
 # This is an extremely basic inventory system and needs to be exteded in the future
 
-export var _item_counts := PoolIntArray([0, 0])
+export var _item_counts := PoolIntArray([0, 0, 0])
 
 onready var _item_slots := $ItemSlots as Control
 
@@ -23,3 +23,7 @@ func set_item_count(item_idx: int, value: int) -> void:
 
 func get_item_count(item_idx: int) -> int:
 	return _item_counts[item_idx]
+
+
+func increment_item_count(item_idx: int, amount: int) -> void:
+	set_item_count(item_idx, get_item_count(item_idx) + amount)

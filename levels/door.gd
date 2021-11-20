@@ -18,15 +18,3 @@ func update_open(open: bool) -> void:
 	else:
 		door_sprite.animation = "close"
 		collision_shape.call_deferred("set", "disabled", false);
-
-
-func _on_InsideArea_body_entered(_body: Node) -> void:
-	pass
-
-
-func _on_OutsideArea_body_entered(_body: Node) -> void:
-	pass
-
-
-func _on_OutsideArea_body_exited(_body: Node) -> void:
-	pass

@@ -116,7 +116,3 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InsideArea"]
 shape = SubResource( 96 )
-
-[connection signal="body_entered" from="OutsideArea" to="." method="_on_OutsideArea_body_entered"]
-[connection signal="body_exited" from="OutsideArea" to="." method="_on_OutsideArea_body_exited"]
-[connection signal="body_entered" from="InsideArea" to="." method="_on_InsideArea_body_entered"]

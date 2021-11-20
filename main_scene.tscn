@@ -10,3 +10,4 @@
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Inventory" parent="HUD" instance=ExtResource( 2 )]
+_item_counts = PoolIntArray( 0, 0, 2 )
