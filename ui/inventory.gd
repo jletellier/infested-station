@@ -1,0 +1,25 @@
+extends CenterContainer
+# This is an extremely basic inventory system and needs to be exteded in the future
+
+export var _item_counts := PoolIntArray([0, 0])
+
+onready var _item_slots := $ItemSlots as Control
+
+
+func _ready():
+	for i in _item_counts.size():
+		set_item_count(i, _item_counts[i])
+
+
+func set_item_count(item_idx: int, value: int) -> void:
+	_item_counts[item_idx] = value
+	var item_slot := _item_slots.get_child(item_idx) as Control
+	var item_count := item_slot.get_node("Count") as Control
+	var item_count_label := item_count.get_node("Label") as RichTextLabel
+	item_count_label.text = String(value)
+	item_count.visible = (value > 1)
+	item_slot.visible = (value > 0)
+
+
+func get_item_count(item_idx: int) -> int:
+	return _item_counts[item_idx]

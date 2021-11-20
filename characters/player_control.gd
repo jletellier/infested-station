@@ -8,10 +8,12 @@ enum {
 const TILE_SIZE: int = 16
 const ItemRes := preload("res://items/item.tscn")
 const Character := preload("res://characters/character.gd")
+const Inventory := preload("res://ui/inventory.gd")
 
 var state := MOVE
 
 onready var character := get_parent() as Character
+onready var inventory := $"/root/MainScene/HUD/Inventory" as Inventory
 
 
 func _physics_process(delta: float) -> void:
@@ -38,6 +40,10 @@ func _move_state(delta: float) -> void:
 func _place_state() -> void:
 	state = MOVE
 
+	var item_count = inventory.get_item_count(0)
+	if (item_count == 0):
+		return
+
 	var new_item_pos = character.snapped_position + (
 			(character.animation_tree.get("parameters/idle/blend_position") * TILE_SIZE)
 	)
@@ -49,3 +55,4 @@ func _place_state() -> void:
 		var item = ItemRes.instance()
 		item.position = new_item_pos
 		character.get_parent().add_child(item)
+		inventory.set_item_count(0, item_count - 1)
