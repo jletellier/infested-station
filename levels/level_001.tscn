@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/elevator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/ladybug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://external_resources/Living_Room_Singles_Shadowless_13.png" type="Texture" id=5]
-[ext_resource path="res://external_resources/Hospital_Singles_Shadowless_119.png" type="Texture" id=6]
+[ext_resource path="res://levels/vending_machine.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/door_horizontal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://items/key_item.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/coin_item.tscn" type="PackedScene" id=9]
@@ -24,9 +24,6 @@
 
 [sub_resource type="CircleShape2D" id=11]
 radius = 7.5
-
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 16, 8 )
 
 [sub_resource type="Curve2D" id=2]
 bake_interval = 16.0
@@ -261,22 +258,15 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Tree3"]
 shape = SubResource( 11 )
 
-[node name="VendingMachine" type="StaticBody2D" parent="YSort"]
+[node name="VendingMachine" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 224, 280 )
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="YSort/VendingMachine"]
-position = Vector2( 1, -12 )
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/VendingMachine"]
-shape = SubResource( 14 )
 
 [node name="ElevatorStart" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 144, 264 )
 
 [node name="ElevatorEnd" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 448, 472 )
+_open = true
 
 [node name="DoorHorizontal" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 264, 264 )
