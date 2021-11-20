@@ -10,4 +10,5 @@ export_presets.cfg
 .vscode/
 
 # Project-specific ignores
+/build/
 /external_resources/*.png
