@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://levels/door_horizontal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://items/key_item.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/coin_item.tscn" type="PackedScene" id=9]
+[ext_resource path="res://characters/npc.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -33,7 +34,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 97, 338, 0, 0, 0, 0, 241, 338, 0, 0, 0, 0, 241, 306 )
+"points": PoolVector2Array( 0, 0, 0, 0, 97, 338, 0, 0, 0, 0, 241, 338 )
 }
 
 [sub_resource type="Curve2D" id=6]
@@ -141,19 +142,19 @@ function = "queue_free"
 data = {
 "base_type": "Area2D",
 "functions": [ {
-"data_connections": [  ],
-"function_id": -1,
-"name": "f_312843592",
-"nodes": [  ],
-"scroll": Vector2( -32.0868, -309.271 ),
-"sequence_connections": [  ]
-}, {
 "data_connections": [ 3, 0, 4, 0 ],
 "function_id": 0,
 "name": "_on_TriggerDialog2_body_entered",
 "nodes": [ 0, Vector2( 13.3333, 0 ), SubResource( 17 ), 3, Vector2( 80, 120 ), SubResource( 19 ), 4, Vector2( 413.333, 0 ), SubResource( 20 ), 5, Vector2( 746.667, 0 ), SubResource( 21 ) ],
 "scroll": Vector2( -300, -277.5 ),
 "sequence_connections": [ 0, 0, 4, 4, 0, 5 ]
+}, {
+"data_connections": [  ],
+"function_id": -1,
+"name": "f_312843592",
+"nodes": [  ],
+"scroll": Vector2( -32.0868, -309.271 ),
+"sequence_connections": [  ]
 } ],
 "is_tool_script": false,
 "signals": [  ],
@@ -179,6 +180,9 @@ tile_data = PoolIntArray( 720910, 1, 65542, 720911, 0, 1, 720912, 0, 1, 720913, 
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 152, 296 )
+
+[node name="NPC" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 248, 296 )
 
 [node name="Enemy1" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 280, 392 )

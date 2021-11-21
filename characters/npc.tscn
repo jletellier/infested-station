@@ -1,10 +1,8 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
-[ext_resource path="res://external_resources/modern_interiors_character_1.png" type="Texture" id=2]
-[ext_resource path="res://characters/player_control.gd" type="Script" id=3]
+[ext_resource path="res://external_resources/modern_interiors_character_2.png" type="Texture" id=2]
 [ext_resource path="res://characters/health_system.gd" type="Script" id=4]
-[ext_resource path="res://characters/action_system.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
@@ -216,7 +214,7 @@ start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="NPC" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 7
 collision/safe_margin = 0.4
@@ -250,23 +248,5 @@ parameters/playback = SubResource( 16 )
 parameters/idle/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
-[node name="CharacterControl" type="Node" parent="."]
-script = ExtResource( 3 )
-
-[node name="ActionSystem" type="Node" parent="."]
-script = ExtResource( 5 )
-
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource( 4 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-limit_left = 0
-limit_top = 0
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-drag_margin_left = 0.1
-drag_margin_top = 0.1
-drag_margin_right = 0.1
-drag_margin_bottom = 0.1
-editor_draw_screen = false
