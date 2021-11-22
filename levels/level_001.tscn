@@ -199,8 +199,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.9, 8.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 4.9, 8.5, 11.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [ "" ],
 "method": "set_text"
@@ -208,7 +208,10 @@ tracks/1/keys = {
 "args": [ "Hey there!" ],
 "method": "set_text"
 }, {
-"args": [ "Yes, I'm talking to you." ],
+"args": [ "Yes, I'm talking \\nto you." ],
+"method": "set_text"
+}, {
+"args": [ "I'm the govenor \\nof this station." ],
 "method": "set_text"
 } ]
 }
