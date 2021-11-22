@@ -182,7 +182,7 @@ extents = Vector2( 8, 8 )
 
 [sub_resource type="Animation" id=22]
 resource_name = "Welcome"
-length = 30.0
+length = 50.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("YSort/Player/CharacterControl")
 tracks/0/interp = 1
@@ -190,10 +190,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 45.8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ false ],
+"method": "set_physics_process"
+}, {
+"args": [ true ],
 "method": "set_physics_process"
 } ]
 }
@@ -204,8 +207,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.9, 8.5, 11.7, 13.9, 18.6, 20.2, 22.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 4.9, 8.5, 11.7, 14.6, 18, 21.6, 26, 28.4, 31.3, 33.6, 36.1, 39, 41, 43.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ "" ],
 "method": "set_text"
@@ -219,13 +222,34 @@ tracks/1/keys = {
 "args": [ "I'm the govenor \\nof this station." ],
 "method": "set_text"
 }, {
+"args": [ "We got attacked by \\nan army of insects." ],
+"method": "set_text"
+}, {
+"args": [ "See those ladybugs?" ],
+"method": "set_text"
+}, {
+"args": [ "" ],
+"method": "set_text"
+}, {
+"args": [ "They might look cute..." ],
+"method": "set_text"
+}, {
+"args": [ "...but they will \\nkill you instantly." ],
+"method": "set_text"
+}, {
+"args": [ "So quit messing around!" ],
+"method": "set_text"
+}, {
+"args": [ "Let's find a way \\nout of here." ],
+"method": "set_text"
+}, {
 "args": [ "" ],
 "method": "set_text"
 }, {
 "args": [ "You go ahead..." ],
 "method": "set_text"
 }, {
-"args": [ "I will check out this room." ],
+"args": [ "I will check out \\nthis room." ],
 "method": "set_text"
 }, {
 "args": [ "" ],
@@ -282,7 +306,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 4.3, 17, 23.2, 24.5 ),
+"times": PoolRealArray( 4.3, 37.3, 44, 45.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [ 1 ],
@@ -305,7 +329,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 22.7, 23.8 ),
+"times": PoolRealArray( 43.5, 44.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ true ],
@@ -314,6 +338,18 @@ tracks/5/keys = {
 "args": [ false ],
 "method": "update_open"
 } ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Player/Camera2D:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 19.4, 21.9, 23.5, 25.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 150 ), Vector2( 0, 150 ), Vector2( 0, 0 ) ]
 }
 
 [node name="Level001" type="Node2D"]
