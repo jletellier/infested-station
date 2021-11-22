@@ -1,11 +1,9 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://external_resources/modern_interiors_character_2.png" type="Texture" id=2]
-[ext_resource path="res://external_resources/modern_interiors_ui_9patch.png" type="Texture" id=3]
+[ext_resource path="res://ui/dialogue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/health_system.gd" type="Script" id=4]
-[ext_resource path="res://external_resources/modern_interiors_ui_handle.png" type="Texture" id=5]
-[ext_resource path="res://ui/font_m5x7.tres" type="DynamicFont" id=6]
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
@@ -254,62 +252,4 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="Dialogue" type="MarginContainer" parent="."]
-grow_horizontal = 2
-grow_vertical = 0
-custom_constants/margin_left = 30
-custom_constants/margin_bottom = 12
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Box" type="NinePatchRect" parent="Dialogue"]
-margin_left = 30.0
-margin_right = 82.0
-margin_bottom = 19.0
-texture = ExtResource( 3 )
-patch_margin_left = 7
-patch_margin_top = 7
-patch_margin_right = 7
-patch_margin_bottom = 7
-
-[node name="CenterContainer" type="CenterContainer" parent="Dialogue/Box"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-size_flags_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Handle" type="TextureRect" parent="Dialogue/Box/CenterContainer"]
-margin_left = 18.0
-margin_right = 34.0
-margin_bottom = 16.0
-texture = ExtResource( 5 )
-stretch_mode = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Dialogue"]
-margin_left = 30.0
-margin_right = 82.0
-margin_bottom = 19.0
-custom_constants/margin_right = 4
-custom_constants/margin_top = 1
-custom_constants/margin_left = 4
-custom_constants/margin_bottom = 5
-
-[node name="CenterContainer" type="CenterContainer" parent="Dialogue/MarginContainer"]
-margin_left = 4.0
-margin_top = 1.0
-margin_right = 48.0
-margin_bottom = 14.0
-
-[node name="Text" type="Label" parent="Dialogue/MarginContainer/CenterContainer"]
-margin_right = 44.0
-margin_bottom = 13.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-custom_colors/font_color = Color( 0.207843, 0.207843, 0.337255, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "Hi there!"
+[node name="Dialogue" parent="." instance=ExtResource( 3 )]
