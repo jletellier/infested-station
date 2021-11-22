@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -65,6 +65,11 @@ _data = {
 bake_interval = 8.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 152, 248, 0, 0, 0, 0, 152, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 168, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 216, 296 )
+}
+
+[sub_resource type="Curve2D" id=26]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 280, 296, 0, 0, 0, 0, 248, 296, 0, 0, 0, 0, 264, 296, 0, 0, 0, 0, 264, 280, 0, 0, 0, 0, 264, 216, 0, 0, 0, 0, 264, 232 )
 }
 
 [sub_resource type="VisualScriptFunction" id=17]
@@ -177,7 +182,7 @@ extents = Vector2( 8, 8 )
 
 [sub_resource type="Animation" id=22]
 resource_name = "Welcome"
-length = 20.0
+length = 30.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("YSort/Player/CharacterControl")
 tracks/0/interp = 1
@@ -199,8 +204,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.9, 8.5, 11.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 4.9, 8.5, 11.7, 13.9, 18.6, 20.2, 22.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ "" ],
 "method": "set_text"
@@ -212,6 +217,18 @@ tracks/1/keys = {
 "method": "set_text"
 }, {
 "args": [ "I'm the govenor \\nof this station." ],
+"method": "set_text"
+}, {
+"args": [ "" ],
+"method": "set_text"
+}, {
+"args": [ "You go ahead..." ],
+"method": "set_text"
+}, {
+"args": [ "I will check out this room." ],
+"method": "set_text"
+}, {
+"args": [ "" ],
 "method": "set_text"
 } ]
 }
@@ -258,6 +275,46 @@ tracks/3/keys = {
 "method": "set_target_point_idx"
 } ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("YSort/NPC/FollowPath")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 4.3, 17, 23.2, 24.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 1 ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 3 ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 4 ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 5 ],
+"method": "set_target_point_idx"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("YSort/DoorHorizontal")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 22.7, 23.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "update_open"
+}, {
+"args": [ false ],
+"method": "update_open"
+} ]
+}
 
 [node name="Level001" type="Node2D"]
 
@@ -281,10 +338,13 @@ parameters/playback = SubResource( 23 )
 path = NodePath("../../../PlayerPath1")
 
 [node name="NPC" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 248, 296 )
+position = Vector2( 280, 296 )
 
 [node name="AnimationTree" parent="YSort/NPC" index="3"]
 parameters/playback = SubResource( 24 )
+
+[node name="FollowPath" parent="YSort/NPC" index="4"]
+path = NodePath("../../../PlayerPath2")
 
 [node name="Enemy1" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 280, 392 )
@@ -419,6 +479,9 @@ curve = SubResource( 13 )
 
 [node name="PlayerPath1" type="Path2D" parent="."]
 curve = SubResource( 25 )
+
+[node name="PlayerPath2" type="Path2D" parent="."]
+curve = SubResource( 26 )
 
 [node name="TriggerDialog2" type="Area2D" parent="."]
 position = Vector2( 136, 472 )

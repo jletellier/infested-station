@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://external_resources/modern_interiors_character_2.png" type="Texture" id=2]
 [ext_resource path="res://ui/dialogue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/health_system.gd" type="Script" id=4]
+[ext_resource path="res://characters/follow_path.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
@@ -248,6 +249,11 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 16 )
 parameters/idle/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
+
+[node name="FollowPath" type="Node" parent="."]
+script = ExtResource( 5 )
+autorun = false
+update_rotation = false
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource( 4 )
