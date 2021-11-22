@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://items/key_item.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/coin_item.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=10]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -55,6 +59,12 @@ _data = {
 [sub_resource type="Curve2D" id=13]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 376, 504, 0, 0, 0, 0, 408, 504 )
+}
+
+[sub_resource type="Curve2D" id=25]
+bake_interval = 8.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 152, 248, 0, 0, 0, 0, 152, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 168, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 216, 296 )
 }
 
 [sub_resource type="VisualScriptFunction" id=17]
@@ -167,6 +177,84 @@ extents = Vector2( 8, 8 )
 
 [sub_resource type="Animation" id=22]
 resource_name = "Welcome"
+length = 20.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("YSort/Player/CharacterControl")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("YSort/NPC/Dialogue")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.9, 8.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ "" ],
+"method": "set_text"
+}, {
+"args": [ "Hey there!" ],
+"method": "set_text"
+}, {
+"args": [ "Yes, I'm talking to you." ],
+"method": "set_text"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("YSort/ElevatorStart")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 4.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "update_open"
+}, {
+"args": [ false ],
+"method": "update_open"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("YSort/Player/FollowPath")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2, 3.6, 6.3, 7.6, 10.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 1 ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 2 ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 3 ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 4 ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 5 ],
+"method": "set_target_point_idx"
+} ]
+}
 
 [node name="Level001" type="Node2D"]
 
@@ -181,10 +269,19 @@ tile_data = PoolIntArray( 720910, 1, 65542, 720911, 0, 1, 720912, 0, 1, 720913, 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 152, 296 )
+position = Vector2( 152, 248 )
+
+[node name="AnimationTree" parent="YSort/Player" index="3"]
+parameters/playback = SubResource( 23 )
+
+[node name="FollowPath" parent="YSort/Player" index="5"]
+path = NodePath("../../../PlayerPath1")
 
 [node name="NPC" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 248, 296 )
+
+[node name="AnimationTree" parent="YSort/NPC" index="3"]
+parameters/playback = SubResource( 24 )
 
 [node name="Enemy1" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 280, 392 )
@@ -317,6 +414,9 @@ curve = SubResource( 10 )
 [node name="EnemyPath6" type="Path2D" parent="."]
 curve = SubResource( 13 )
 
+[node name="PlayerPath1" type="Path2D" parent="."]
+curve = SubResource( 25 )
+
 [node name="TriggerDialog2" type="Area2D" parent="."]
 position = Vector2( 136, 472 )
 collision_layer = 0
@@ -328,10 +428,13 @@ script = SubResource( 15 )
 shape = SubResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Welcome"
 anims/Welcome = SubResource( 22 )
 
 [connection signal="body_entered" from="TriggerDialog2" to="TriggerDialog2" method="_on_TriggerDialog2_body_entered"]
 
+[editable path="YSort/Player"]
+[editable path="YSort/NPC"]
 [editable path="YSort/Enemy1"]
 [editable path="YSort/Enemy2"]
 [editable path="YSort/Enemy3"]
