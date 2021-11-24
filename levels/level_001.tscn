@@ -207,7 +207,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.9, 8.5, 11.7, 14.6, 18, 21.6, 26, 28.4, 31.3, 33.6, 36.1, 39, 41, 43.2 ),
+"times": PoolRealArray( 0, 4.9, 8.5, 11.7, 14.6, 18, 21.6, 26, 28.2, 31.3, 33.6, 36.1, 39, 41, 43.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ "" ],
@@ -234,7 +234,7 @@ tracks/1/keys = {
 "args": [ "They might look cute..." ],
 "method": "set_text"
 }, {
-"args": [ "...but they will \\nkill you instantly." ],
+"args": [ "...but I wouldn't \\ntouch them." ],
 "method": "set_text"
 }, {
 "args": [ "So quit messing around!" ],
