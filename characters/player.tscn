@@ -219,7 +219,7 @@ start_node = "idle"
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 23
 collision/safe_margin = 0.4
 script = ExtResource( 1 )
 
@@ -272,7 +272,7 @@ limit_top = 0
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.1
-drag_margin_top = 0.1
+drag_margin_top = 0.05
 drag_margin_right = 0.1
-drag_margin_bottom = 0.1
+drag_margin_bottom = 0.05
 editor_draw_screen = false

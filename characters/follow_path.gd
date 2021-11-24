@@ -17,8 +17,7 @@ onready var character := get_parent() as Character
 
 
 func _ready() -> void:
-	if autorun:
-		set_physics_process(true)
+	set_physics_process(autorun)
 
 
 func _physics_process(delta: float) -> void:
@@ -43,6 +42,15 @@ func _physics_process(delta: float) -> void:
 			direction *= -1
 
 
-func set_target_point_idx(point_idx: int) -> void:
+func set_target_point_idx(point_idx: int, skip_previous: bool = false) -> void:
 	set_physics_process(true)
 	target_point_idx = point_idx
+	if skip_previous:
+		current_point_idx = target_point_idx
+
+
+func set_position_instantly(point_idx: int) -> void:
+	set_physics_process(false)
+	var current_point := path_2d.position + curve.get_point_position(point_idx)
+	character.move(0, Vector2.ZERO)
+	character.position = current_point

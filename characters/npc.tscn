@@ -217,8 +217,8 @@ start_node = "idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
 [node name="NPC" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 7
+collision_layer = 16
+collision_mask = 23
 collision/safe_margin = 0.4
 script = ExtResource( 1 )
 
