@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://items/key_item.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/coin_item.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=10]
+[ext_resource path="res://levels/trigger_cutscene.gd" type="Script" id=11]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
@@ -190,7 +191,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 45.8 ),
+"times": PoolRealArray( 0, 48 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ false ],
@@ -350,6 +351,23 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 150 ), Vector2( 0, 150 ), Vector2( 0, 0 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("TriggerCutscene")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 46.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_cutscene_mode"
+}, {
+"args": [ false ],
+"method": "set_cutscene_mode"
+} ]
 }
 
 [node name="Level001" type="Node2D"]
@@ -528,6 +546,9 @@ script = SubResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDialog2"]
 shape = SubResource( 16 )
+
+[node name="TriggerCutscene" type="Node" parent="."]
+script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Welcome"
