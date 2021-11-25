@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://external_resources/modern_interiors_character_2.png" type="Texture" id=2]
 [ext_resource path="res://ui/dialogue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/health_system.gd" type="Script" id=4]
 [ext_resource path="res://characters/follow_path.gd" type="Script" id=5]
+[ext_resource path="res://characters/follow_character_action.gd" type="Script" id=6]
+[ext_resource path="res://characters/follow_character.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
@@ -217,7 +219,7 @@ start_node = "idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
 [node name="NPC" type="KinematicBody2D"]
-collision_layer = 16
+collision_layer = 48
 collision_mask = 23
 collision/safe_margin = 0.4
 script = ExtResource( 1 )
@@ -255,7 +257,13 @@ script = ExtResource( 5 )
 autorun = false
 update_rotation = false
 
+[node name="FollowCharacter" type="Node" parent="."]
+script = ExtResource( 7 )
+
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource( 4 )
+
+[node name="Action" type="Node" parent="."]
+script = ExtResource( 6 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 3 )]
