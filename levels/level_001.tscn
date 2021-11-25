@@ -230,7 +230,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3, 6.8, 10.7, 12.5, 15.1, 19.1, 23.2, 27.3, 29.3, 32.8, 35.3, 39.1, 43.3, 46.6 ),
+"times": PoolRealArray( 0, 3, 6.8, 10.7, 13, 15.1, 19.1, 23.2, 27.3, 29.3, 32.8, 35.3, 39.1, 43.3, 46.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ "" ],
@@ -242,10 +242,10 @@ tracks/2/keys = {
 "args": [ "These bugs are creeping \\nme out." ],
 "method": "set_text"
 }, {
-"args": [ "Good news:" ],
+"args": [ "I have good news!" ],
 "method": "set_text"
 }, {
-"args": [ "I called station security..." ],
+"args": [ "I called security..." ],
 "method": "set_text"
 }, {
 "args": [ "...and there might be \\na way out of here." ],
@@ -260,7 +260,7 @@ tracks/2/keys = {
 "args": [ "I know..." ],
 "method": "set_text"
 }, {
-"args": [ "Seems widely specific \\nto me, too." ],
+"args": [ "Seems weirdly specific \\nto me, too." ],
 "method": "set_text"
 }, {
 "args": [ "Anyway, take this coin..." ],
@@ -376,7 +376,7 @@ tracks/1/keys = {
 "args": [ "Yes, I'm talking \\nto you." ],
 "method": "set_text"
 }, {
-"args": [ "I'm the govenor \\nof this station." ],
+"args": [ "I'm the manager \\nof this facility." ],
 "method": "set_text"
 }, {
 "args": [ "We got attacked by \\nan army of insects." ],
