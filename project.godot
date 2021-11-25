@@ -79,10 +79,6 @@ ui_down={
  ]
 }
 
-[node]
-
-name_casing=2
-
 [physics]
 
 common/enable_pause_aware_picking=true

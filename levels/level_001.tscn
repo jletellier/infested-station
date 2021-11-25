@@ -143,11 +143,11 @@ base_type = "AnimationPlayer"
 base_script = ""
 type_cache = {
 "class_name": "",
-"hint": 0,
+"hint": 3,
 "hint_string": "",
-"name": "",
-"type": 0,
-"usage": 7
+"name": "current_animation",
+"type": 4,
+"usage": 32770
 }
 property = "current_animation"
 
@@ -562,6 +562,9 @@ parameters/playback = SubResource( 24 )
 [node name="FollowPath" parent="YSort/NPC" index="4"]
 path = NodePath("../../../PlayerPath2")
 
+[node name="Dialogue" parent="YSort/NPC" index="6"]
+_text = ""
+
 [node name="Enemy1" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 280, 392 )
 
@@ -722,7 +725,6 @@ shape = SubResource( 16 )
 script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Welcome"
 anims/CoinInstructions = SubResource( 27 )
 anims/Welcome = SubResource( 22 )
 

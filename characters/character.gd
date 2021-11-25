@@ -7,6 +7,7 @@ export var max_speed: int = 60
 
 var velocity := Vector2.ZERO
 var snapped_position := Vector2.ZERO
+var idle_input_vector := Vector2.ZERO
 
 onready var animation_player := $AnimationPlayer as AnimationPlayer
 onready var animation_tree := $AnimationTree as AnimationTree
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 func move(delta: float, input_vector := Vector2.ZERO) -> void:
 	if input_vector != Vector2.ZERO:
+		idle_input_vector = input_vector
 		animation_tree.set("parameters/idle/blend_position", input_vector)
 		animation_tree.set("parameters/walk/blend_position", input_vector)
 		animation_state.travel("walk")
@@ -31,7 +33,7 @@ func move(delta: float, input_vector := Vector2.ZERO) -> void:
 			snapped_position = (
 					position -
 					(Vector2.ONE * TILE_SIZE / 2) +
-					(animation_tree.get("parameters/idle/blend_position") * TILE_SIZE / 2)
+					(idle_input_vector * TILE_SIZE / 2)
 			)
 			snapped_position = snapped_position.snapped(Vector2.ONE * TILE_SIZE)
 			snapped_position += Vector2.ONE * TILE_SIZE / 2

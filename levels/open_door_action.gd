@@ -1,22 +1,13 @@
 extends Node
 
 const Door := preload("res://levels/door.gd")
-const ActionSystem := preload("res://characters/action_system.gd")
+const Inventory := preload("res://ui/inventory.gd")
 
 onready var _door := get_parent() as Door
-
-
-func _on_OutsideArea_body_exited(body: Node):
-	var action_system := body.get_node_or_null("ActionSystem") as ActionSystem
-	if action_system:
-		action_system.unset_action_node(self)
-
-
-func _on_OutsideArea_body_entered(body: Node):
-	var action_system := body.get_node_or_null("ActionSystem") as ActionSystem
-	if action_system:
-		action_system.set_action_node(self, 0)
+onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
 
 
 func trigger_action():
-	_door.update_open(true)
+	if _inventory.get_item_count(0) > 0:
+		_inventory.increment_item_count(0, -1)
+		_door.update_open(true)

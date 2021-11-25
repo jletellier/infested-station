@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://external_resources/modern_interiors_character_1.png" type="Texture" id=2]
@@ -217,6 +217,9 @@ start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 7, 7 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 23
@@ -259,6 +262,14 @@ script = ExtResource( 6 )
 autorun = false
 update_rotation = false
 
+[node name="ActionBox" type="Area2D" parent="."]
+position = Vector2( 0, 16 )
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionBox"]
+shape = SubResource( 25 )
+
 [node name="ActionSystem" type="Node" parent="."]
 script = ExtResource( 5 )
 
@@ -276,3 +287,6 @@ drag_margin_top = 0.05
 drag_margin_right = 0.1
 drag_margin_bottom = 0.05
 editor_draw_screen = false
+
+[connection signal="body_entered" from="ActionBox" to="ActionSystem" method="_on_ActionBox_body_entered"]
+[connection signal="body_exited" from="ActionBox" to="ActionSystem" method="_on_ActionBox_body_exited"]

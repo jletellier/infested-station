@@ -31,6 +31,7 @@ func _move_state(delta: float) -> void:
 
 	if !input_vector:
 		if Input.is_action_just_pressed("ui_accept"):
+			action_system.set_action_box_position(character.idle_input_vector * TILE_SIZE)
 			state = ACTION
 
 	character.move(delta, input_vector)
