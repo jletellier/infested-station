@@ -15,7 +15,7 @@ onready var character := get_parent() as Character
 func _physics_process(delta: float) -> void:
 	if target_health_system:
 		if last_hit_delta > cooldown:
-			var origin_position = character.position
+			var origin_position := character.position
 			target_health_system.take_damage(strength, origin_position)
 			last_hit_delta = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://external_resources/modern_interiors_character_1.png" type="Texture" id=2]
@@ -9,6 +9,74 @@
 
 [sub_resource type="CircleShape2D" id=24]
 radius = 7.5
+
+[sub_resource type="Animation" id=29]
+resource_name = "hurt_down"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1073, 1074, 1075 ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "hurt_left"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1070, 1071, 1072 ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "hurt_right"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1064, 1065, 1066 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "hurt_up"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1067, 1068, 1069 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle_down"
@@ -153,6 +221,31 @@ tracks/0/keys = {
 "values": [ 118, 119, 120, 121, 122, 123 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "hurt_down"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "hurt_up"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "hurt_left"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "hurt_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=34]
+blend_point_0/node = SubResource( 30 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 31 )
+blend_point_1/pos = Vector2( 0, -1.1 )
+blend_point_2/node = SubResource( 32 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 33 )
+blend_point_3/pos = Vector2( 1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle_left"
 
@@ -207,13 +300,22 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
 [sub_resource type="AnimationNodeStateMachine" id=15]
+states/hurt/node = SubResource( 34 )
+states/hurt/position = Vector2( 457.667, 287 )
 states/idle/node = SubResource( 14 )
 states/idle/position = Vector2( 346.5, 190 )
 states/walk/node = SubResource( 21 )
 states/walk/position = Vector2( 588.5, 191.25 )
-transitions = [ "idle", "walk", SubResource( 22 ), "walk", "idle", SubResource( 23 ) ]
+transitions = [ "idle", "walk", SubResource( 22 ), "walk", "idle", SubResource( 23 ), "idle", "hurt", SubResource( 35 ), "hurt", "idle", SubResource( 37 ), "walk", "hurt", SubResource( 38 ) ]
 start_node = "idle"
+graph_offset = Vector2( 40, 114 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
@@ -238,6 +340,10 @@ frame = 74
 shape = SubResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hurt_down = SubResource( 29 )
+anims/hurt_left = SubResource( 26 )
+anims/hurt_right = SubResource( 27 )
+anims/hurt_up = SubResource( 28 )
 anims/idle_down = SubResource( 2 )
 anims/idle_left = SubResource( 3 )
 anims/idle_right = SubResource( 4 )
@@ -251,6 +357,7 @@ anims/walk_up = SubResource( 9 )
 tree_root = SubResource( 15 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 16 )
+parameters/hurt/blend_position = Vector2( -0.439394, -0.0369565 )
 parameters/idle/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 

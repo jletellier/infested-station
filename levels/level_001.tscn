@@ -710,6 +710,7 @@ position = Vector2( 440, 504 )
 
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 23 )
+parameters/hurt/blend_position = Vector2( 0, 0 )
 
 [node name="FollowPath" parent="YSort/Player" index="5"]
 path = NodePath("../../../PlayerPath1")
@@ -894,7 +895,6 @@ animation_name = "WeDidIt"
 script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Welcome"
 anims/CoinInstructions = SubResource( 27 )
 anims/ComeGetMe = SubResource( 34 )
 anims/WeDidIt = SubResource( 35 )
