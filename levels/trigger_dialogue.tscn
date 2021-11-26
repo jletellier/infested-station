@@ -109,10 +109,11 @@ data = {
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 8, 8 )
 
-[node name="TriggerDialog2" type="Area2D"]
+[node name="TriggerDialogue" type="Area2D"]
 position = Vector2( 264, 264 )
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = SubResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

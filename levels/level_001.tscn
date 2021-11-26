@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -70,12 +70,12 @@ _data = {
 [sub_resource type="Curve2D" id=25]
 bake_interval = 8.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 152, 248, 0, 0, 0, 0, 152, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 168, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 216, 296, 0, 0, 0, 0, 264, 248, 0, 0, 0, 0, 440, 456, 0, 0, 0, 0, 440, 488 )
+"points": PoolVector2Array( 0, 0, 0, 0, 152, 248, 0, 0, 0, 0, 152, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 168, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 216, 296, 0, 0, 0, 0, 264, 248, 0, 0, 0, 0, 440, 456, 0, 0, 0, 0, 440, 488, 0, 0, 0, 0, 456, 488, 0, 0, 0, 0, 456, 456, 0, 0, 0, 0, 456, 472 )
 }
 
 [sub_resource type="Curve2D" id=26]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 280, 296, 0, 0, 0, 0, 248, 296, 0, 0, 0, 0, 264, 296, 0, 0, 0, 0, 264, 280, 0, 0, 0, 0, 264, 200, 0, 0, 0, 0, 264, 216 )
+"points": PoolVector2Array( 0, 0, 0, 0, 280, 296, 0, 0, 0, 0, 248, 296, 0, 0, 0, 0, 264, 296, 0, 0, 0, 0, 264, 280, 0, 0, 0, 0, 264, 200, 0, 0, 0, 0, 264, 216, 0, 0, 0, 0, 440, 504, 0, 0, 0, 0, 440, 456, 0, 0, 0, 0, 440, 472 )
 }
 
 [sub_resource type="RectangleShape2D" id=33]
@@ -155,7 +155,7 @@ tracks/2/keys = {
 "args": [ "I know..." ],
 "method": "set_text"
 }, {
-"args": [ "Seems weirdly specific \\nto me, too." ],
+"args": [ "Sounds weirdly specific \\nto me, too." ],
 "method": "set_text"
 }, {
 "args": [ "Anyway, take this coin..." ],
@@ -352,6 +352,131 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ true ],
+"method": "update_open"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("YSort/NPC/Action")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 17.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_is_active"
+} ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "WeDidIt"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("TriggerCutscene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_cutscene_mode"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("YSort/Player/CharacterControl")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("YSort/Player/FollowPath")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 11, false ],
+"method": "set_target_point_idx"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("YSort/NPC/FollowPath")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 6, true ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 8, false ],
+"method": "set_target_point_idx"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("YSort/NPC/Dialogue")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 3.2, 7.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ "We did it!" ],
+"method": "set_text"
+}, {
+"args": [ "This elevator will bring \\nus to the next level." ],
+"method": "set_text"
+}, {
+"args": [ "" ],
+"method": "set_text"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("YSort/NPC/FollowCharacter")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("YSort/ElevatorEnd")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
 "method": "update_open"
 } ]
 }
@@ -581,6 +706,9 @@ parameters/playback = SubResource( 24 )
 [node name="FollowPath" parent="YSort/NPC" index="4"]
 path = NodePath("../../../PlayerPath2")
 
+[node name="Action" parent="YSort/NPC" index="7"]
+is_active = false
+
 [node name="Dialogue" parent="YSort/NPC" index="8"]
 _text = ""
 
@@ -740,6 +868,11 @@ animation_name = "ComeGetMe"
 [node name="CollisionShape2D" parent="TriggerDialogue3" index="0"]
 shape = SubResource( 33 )
 
+[node name="TriggerDialogue4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 424, 504 )
+collision_mask = 16
+animation_name = "WeDidIt"
+
 [node name="TriggerCutscene" type="Node" parent="."]
 script = ExtResource( 11 )
 
@@ -747,6 +880,7 @@ script = ExtResource( 11 )
 autoplay = "Welcome"
 anims/CoinInstructions = SubResource( 27 )
 anims/ComeGetMe = SubResource( 34 )
+anims/WeDidIt = SubResource( 35 )
 anims/Welcome = SubResource( 22 )
 
 [editable path="YSort/Player"]
