@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/trigger_cutscene.gd" type="Script" id=11]
 [ext_resource path="res://external_resources/modern_office_table.png" type="Texture" id=12]
+[ext_resource path="res://levels/trigger_dialogue.tscn" type="PackedScene" id=13]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
@@ -69,7 +70,7 @@ _data = {
 [sub_resource type="Curve2D" id=25]
 bake_interval = 8.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 152, 248, 0, 0, 0, 0, 152, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 168, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 216, 296, 0, 0, 0, 0, 264, 248 )
+"points": PoolVector2Array( 0, 0, 0, 0, 152, 248, 0, 0, 0, 0, 152, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 168, 296, 0, 0, 0, 0, 184, 296, 0, 0, 0, 0, 216, 296, 0, 0, 0, 0, 264, 248, 0, 0, 0, 0, 440, 456, 0, 0, 0, 0, 440, 488 )
 }
 
 [sub_resource type="Curve2D" id=26]
@@ -77,114 +78,8 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 280, 296, 0, 0, 0, 0, 248, 296, 0, 0, 0, 0, 264, 296, 0, 0, 0, 0, 264, 280, 0, 0, 0, 0, 264, 200, 0, 0, 0, 0, 264, 216 )
 }
 
-[sub_resource type="VisualScriptFunction" id=17]
-resource_name = "_on_TriggerDialog2_body_entered"
-argument_count = 1
-argument_1/type = 0
-argument_1/name = "body"
-
-[sub_resource type="VisualScriptFunctionCall" id=19]
-_default_input_values = [ NodePath("../AnimationPlayer") ]
-base_type = "Area2D"
-argument_cache = {
-"args": [ {
-"class_name": "",
-"hint": 0,
-"hint_string": "",
-"name": "path",
-"type": 15,
-"usage": 7
-} ],
-"default_args": [  ],
-"flags": 9,
-"id": 0,
-"name": "",
-"return": {
-"class_name": "Node",
-"hint": 0,
-"hint_string": "",
-"name": "",
-"type": 17,
-"usage": 7
-}
-}
-function = "get_node"
-
-[sub_resource type="VisualScriptFunctionCall" id=21]
-base_type = "Area2D"
-argument_cache = {
-"args": [  ],
-"default_args": [  ],
-"flags": 1,
-"id": 0,
-"name": "",
-"return": {
-"class_name": "",
-"hint": 0,
-"hint_string": "",
-"name": "",
-"type": 0,
-"usage": 7
-}
-}
-function = "queue_free"
-
-[sub_resource type="VisualScriptTypeCast" id=28]
-_default_input_values = [ null ]
-base_type = "AnimationPlayer"
-
-[sub_resource type="VisualScriptVariableGet" id=30]
-var_name = "_animation_name"
-
-[sub_resource type="VisualScriptPropertySet" id=31]
-_default_input_values = [ null, "Null" ]
-set_mode = 2
-base_type = "AnimationPlayer"
-base_script = ""
-type_cache = {
-"class_name": "",
-"hint": 3,
-"hint_string": "",
-"name": "current_animation",
-"type": 4,
-"usage": 32770
-}
-property = "current_animation"
-
-[sub_resource type="VisualScript" id=15]
-data = {
-"base_type": "Area2D",
-"functions": [ {
-"data_connections": [  ],
-"function_id": -1,
-"name": "f_312843592",
-"nodes": [  ],
-"scroll": Vector2( 23.9397, -307 ),
-"sequence_connections": [  ]
-}, {
-"data_connections": [ 3, 0, 7, 0, 7, 0, 10, 0, 9, 0, 10, 1 ],
-"function_id": 0,
-"name": "_on_TriggerDialog2_body_entered",
-"nodes": [ 0, Vector2( 13.3333, 0 ), SubResource( 17 ), 3, Vector2( 80, 120 ), SubResource( 19 ), 5, Vector2( 880, 40 ), SubResource( 21 ), 7, Vector2( 360, 40 ), SubResource( 28 ), 9, Vector2( 293.333, 240 ), SubResource( 30 ), 10, Vector2( 600, 40 ), SubResource( 31 ) ],
-"scroll": Vector2( -300, -277.5 ),
-"sequence_connections": [ 10, 0, 5, 0, 0, 7, 7, 0, 10 ]
-} ],
-"is_tool_script": false,
-"signals": [  ],
-"variables": [ {
-"default_value": "CoinInstructions",
-"export": false,
-"hint": 0,
-"hint_string": "",
-"name": "_animation_name",
-"type": 4,
-"usage": 7
-} ],
-"vs_unify": true
-}
-
-[sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 8, 8 )
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 16, 8 )
 
 [sub_resource type="Animation" id=27]
 resource_name = "CoinInstructions"
@@ -320,6 +215,130 @@ tracks/5/keys = {
 "values": [ {
 "args": [ 5 ],
 "method": "set_position_instantly"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("YSort/DoorHorizontal")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "update_open"
+} ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "ComeGetMe"
+length = 17.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("TriggerCutscene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_cutscene_mode"
+}, {
+"args": [ false ],
+"method": "set_cutscene_mode"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("YSort/Player/CharacterControl")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+}, {
+"args": [ true ],
+"method": "set_physics_process"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Player/Camera2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 4, 14.5, 17.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -176, -176 ), Vector2( -176, -176 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("YSort/Player/FollowPath")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 16.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 7, true ],
+"method": "set_target_point_idx"
+}, {
+"args": [ 8, false ],
+"method": "set_target_point_idx"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("YSort/NPC/FollowPath")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 5 ],
+"method": "set_position_instantly"
+}, {
+"args": [ 2, true ],
+"method": "set_target_point_idx"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("YSort/NPC/Dialogue")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 5, 6.3, 9.6, 11.2, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "WAIT!" ],
+"method": "set_text"
+}, {
+"args": [ "You wouldn't just \\nleave me here..." ],
+"method": "set_text"
+}, {
+"args": [ "Right???" ],
+"method": "set_text"
+}, {
+"args": [ "I think it's best if \\nyou pick me up." ],
+"method": "set_text"
+}, {
+"args": [ "" ],
+"method": "set_text"
 } ]
 }
 tracks/6/type = "method"
@@ -545,7 +564,7 @@ tile_data = PoolIntArray( 655374, 1, 65542, 655375, 0, 1, 655376, 0, 1, 655377, 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 184, 296 )
+position = Vector2( 440, 504 )
 
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 23 )
@@ -712,14 +731,14 @@ curve = SubResource( 25 )
 [node name="PlayerPath2" type="Path2D" parent="."]
 curve = SubResource( 26 )
 
-[node name="TriggerDialog2" type="Area2D" parent="."]
-position = Vector2( 264, 264 )
-collision_layer = 0
-collision_mask = 2
-script = SubResource( 15 )
+[node name="TriggerDialogue2" parent="." instance=ExtResource( 13 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDialog2"]
-shape = SubResource( 16 )
+[node name="TriggerDialogue3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 448, 472 )
+animation_name = "ComeGetMe"
+
+[node name="CollisionShape2D" parent="TriggerDialogue3" index="0"]
+shape = SubResource( 33 )
 
 [node name="TriggerCutscene" type="Node" parent="."]
 script = ExtResource( 11 )
@@ -727,9 +746,8 @@ script = ExtResource( 11 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Welcome"
 anims/CoinInstructions = SubResource( 27 )
+anims/ComeGetMe = SubResource( 34 )
 anims/Welcome = SubResource( 22 )
-
-[connection signal="body_entered" from="TriggerDialog2" to="TriggerDialog2" method="_on_TriggerDialog2_body_entered"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/NPC"]
@@ -739,3 +757,4 @@ anims/Welcome = SubResource( 22 )
 [editable path="YSort/Enemy4"]
 [editable path="YSort/Enemy5"]
 [editable path="YSort/Enemy6"]
+[editable path="TriggerDialogue3"]
