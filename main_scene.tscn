@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/level_001.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/inventory.tscn" type="PackedScene" id=2]
@@ -59,6 +59,38 @@ tracks/1/keys = {
 "values": [ 0, -20 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "Hide"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Show"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [node name="MainScene" type="Node2D"]
 
 [node name="Level001" parent="." instance=ExtResource( 1 )]
@@ -93,3 +125,16 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/CutsceneRect"]
 anims/Hide = SubResource( 2 )
 anims/Show = SubResource( 1 )
+
+[node name="CurtainRect" type="ColorRect" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/CurtainRect"]
+autoplay = "Hide"
+anims/Hide = SubResource( 3 )
+anims/Show = SubResource( 4 )

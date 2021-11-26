@@ -15,6 +15,11 @@ onready var character := get_parent() as Character
 onready var action_system := $"../ActionSystem" as ActionSystem
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("game_reload"):
+		var _reload_code := get_node("../../../").get_tree().reload_current_scene()
+
+
 func _physics_process(delta: float) -> void:
 	match state:
 		MOVE:

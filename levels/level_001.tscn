@@ -10,7 +10,7 @@
 [ext_resource path="res://items/key_item.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/coin_item.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=10]
-[ext_resource path="res://levels/trigger_cutscene.gd" type="Script" id=11]
+[ext_resource path="res://ui/trigger_ui_elements.gd" type="Script" id=11]
 [ext_resource path="res://external_resources/modern_office_table.png" type="Texture" id=12]
 [ext_resource path="res://levels/trigger_dialogue.tscn" type="PackedScene" id=13]
 
@@ -85,7 +85,7 @@ extents = Vector2( 16, 8 )
 resource_name = "CoinInstructions"
 length = 48.1
 tracks/0/type = "method"
-tracks/0/path = NodePath("TriggerCutscene")
+tracks/0/path = NodePath("TriggerUIElements")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -236,7 +236,7 @@ tracks/6/keys = {
 resource_name = "ComeGetMe"
 length = 17.5
 tracks/0/type = "method"
-tracks/0/path = NodePath("TriggerCutscene")
+tracks/0/path = NodePath("TriggerUIElements")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -374,17 +374,20 @@ tracks/7/keys = {
 resource_name = "WeDidIt"
 length = 10.0
 tracks/0/type = "method"
-tracks/0/path = NodePath("TriggerCutscene")
+tracks/0/path = NodePath("TriggerUIElements")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ true ],
 "method": "set_cutscene_mode"
+}, {
+"args": [ true ],
+"method": "set_curtain_mode"
 } ]
 }
 tracks/1/type = "method"
@@ -659,7 +662,7 @@ tracks/6/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 150 ), Vector2( 0, 150 ), Vector2( 0, 0 ) ]
 }
 tracks/7/type = "method"
-tracks/7/path = NodePath("TriggerCutscene")
+tracks/7/path = NodePath("TriggerUIElements")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -673,6 +676,20 @@ tracks/7/keys = {
 }, {
 "args": [ false ],
 "method": "set_cutscene_mode"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("TriggerUIElements")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_curtain_mode"
 } ]
 }
 
@@ -873,7 +890,7 @@ position = Vector2( 424, 504 )
 collision_mask = 16
 animation_name = "WeDidIt"
 
-[node name="TriggerCutscene" type="Node" parent="."]
+[node name="TriggerUIElements" type="Node" parent="."]
 script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
