@@ -42,10 +42,14 @@ func set_action_box_position(position: Vector2) -> void:
 func _on_ActionBox_body_entered(body: Node):
 	var action_node := body.get_node_or_null("Action") as Node
 	if action_node:
+		if _current_action_node:
+			_current_action_node.set_button_hint(false)
 		_current_action_node = action_node
+		_current_action_node.show_button_hint()
 
 
 func _on_ActionBox_body_exited(body: Node):
 	var action_node := body.get_node_or_null("Action") as Node
 	if _current_action_node == action_node:
+		_current_action_node.set_button_hint(false)
 		_current_action_node = null

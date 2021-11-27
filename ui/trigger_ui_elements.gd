@@ -21,3 +21,7 @@ func set_curtain_mode(is_enabled: bool) -> void:
 		_curtain_player.current_animation = "Show"
 	else:
 		_curtain_player.current_animation = "Hide"
+
+
+func show_end_scene() -> void:
+	_curtain_player.current_animation = "End"

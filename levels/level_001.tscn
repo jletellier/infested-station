@@ -386,8 +386,8 @@ tracks/0/keys = {
 "args": [ true ],
 "method": "set_cutscene_mode"
 }, {
-"args": [ true ],
-"method": "set_curtain_mode"
+"args": [  ],
+"method": "show_end_scene"
 } ]
 }
 tracks/1/type = "method"
@@ -706,7 +706,7 @@ tile_data = PoolIntArray( 655374, 1, 65542, 655375, 0, 1, 655376, 0, 1, 655377, 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 440, 504 )
+position = Vector2( 184, 296 )
 
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 23 )
@@ -895,6 +895,7 @@ animation_name = "WeDidIt"
 script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Welcome"
 anims/CoinInstructions = SubResource( 27 )
 anims/ComeGetMe = SubResource( 34 )
 anims/WeDidIt = SubResource( 35 )
