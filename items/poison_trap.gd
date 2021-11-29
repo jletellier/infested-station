@@ -11,7 +11,6 @@ func _on_Item_body_entered(body: Node) -> void:
 
 	var particle := ParticleRes.instance() as CPUParticles2D
 	particle.position = position
-	particle.emitting = true
 	get_parent().add_child(particle)
 
 	queue_free()
