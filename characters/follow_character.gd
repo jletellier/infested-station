@@ -19,11 +19,11 @@ func _physics_process(delta: float) -> void:
 	if _target.is_snapping_y:
 		target_position.y = _target.snapped_position.y
 
-	target_position += _target.idle_input_vector * -16
-	var path_direction := (target_position - old_position).normalized()
-
-	if old_position.distance_to(target_position) < 4:
-		path_direction = Vector2.ZERO
+	var path_direction := Vector2.ZERO
+	if old_position.distance_to(target_position) > 16:
+		target_position += _target.idle_input_vector * -16
+		if old_position.distance_to(target_position) > 4:
+			path_direction = (target_position - old_position).normalized()
 
 	_character.move(delta, path_direction)
 
