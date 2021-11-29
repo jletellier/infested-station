@@ -14,8 +14,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var old_position := _character.position
 	var target_position := _target.position
-	if _target.snapped_position:
-		target_position = _target.snapped_position
+	if _target.is_snapping_x:
+		target_position.x = _target.snapped_position.x
+	if _target.is_snapping_y:
+		target_position.y = _target.snapped_position.y
 
 	target_position += _target.idle_input_vector * -16
 	var path_direction := (target_position - old_position).normalized()
