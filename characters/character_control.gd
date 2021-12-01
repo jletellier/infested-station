@@ -13,11 +13,21 @@ var state := MOVE
 
 onready var character := get_parent() as Character
 onready var action_system := $"../ActionSystem" as ActionSystem
+onready var level_node := $"../../../" as Node
+onready var level_player := level_node.get_node("AnimationPlayer") as AnimationPlayer
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("game_reload"):
-		var _reload_code := get_node("../../../").get_tree().reload_current_scene()
+		var _reload_code := level_node.get_tree().reload_current_scene()
+
+	if (!is_physics_processing() &&
+		Input.is_action_just_pressed("ui_cancel") &&
+		level_player.current_animation != "WeDidIt" &&
+		level_player.current_animation_position > 1 &&
+		level_player.current_animation_position < level_player.current_animation_length - 2
+	):
+		level_player.seek(level_player.current_animation_length - 2)
 
 
 func _physics_process(delta: float) -> void:

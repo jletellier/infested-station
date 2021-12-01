@@ -49,8 +49,12 @@ func set_target_point_idx(point_idx: int, skip_previous: bool = false) -> void:
 		current_point_idx = target_point_idx
 
 
-func set_position_instantly(point_idx: int) -> void:
+func set_position_instantly(point_idx: int, idle_input_vector := Vector2.ZERO) -> void:
 	set_physics_process(false)
 	var current_point := path_2d.position + curve.get_point_position(point_idx)
-	character.move(0, Vector2.ZERO)
+	character.snapped_position = current_point
 	character.position = current_point
+	character.last_input_vector = Vector2.ZERO
+	if idle_input_vector:
+		character.idle_input_vector = idle_input_vector
+	character.move(0, Vector2.ZERO)

@@ -55,11 +55,11 @@ func move(delta: float, input_vector := Vector2.ZERO) -> void:
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
 		idle_input_vector = input_vector
-		animation_tree.set("parameters/idle/blend_position", input_vector)
 		animation_tree.set("parameters/walk/blend_position", input_vector)
 		animation_state.travel("walk")
 		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
 	else:
+		animation_tree.set("parameters/idle/blend_position", idle_input_vector)
 		animation_state.travel("idle")
 		velocity = Vector2.ZERO
 
