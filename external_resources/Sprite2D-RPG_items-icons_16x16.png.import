@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br7utwu8vbydy"
-path="res://.godot/imported/Room_Builder_Floors_16x16.png-7306595a789d163bdc19f1772f66ced7.ctex"
+uid="uid://bcxuqmb1gmhp4"
+path="res://.godot/imported/Sprite2D-RPG_items-icons_16x16.png-044b0433b604c299ae3f43672fc04646.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://external_resources/Room_Builder_Floors_16x16.png"
-dest_files=["res://.godot/imported/Room_Builder_Floors_16x16.png-7306595a789d163bdc19f1772f66ced7.ctex"]
+source_file="res://external_resources/Sprite2D-RPG_items-icons_16x16.png"
+dest_files=["res://.godot/imported/Sprite2D-RPG_items-icons_16x16.png-044b0433b604c299ae3f43672fc04646.ctex"]
 
 [params]
 

@@ -3,13 +3,13 @@ extends Node
 const Character := preload("res://characters/character.gd")
 const HealthSystem := preload("res://characters/health_system.gd")
 
-export var strength: int = 100
-export var cooldown: float = 0.5
+@export var strength: int = 100
+@export var cooldown: float = 0.5
 
 var target_health_system: HealthSystem = null
 var last_hit_delta: float = cooldown
 
-onready var character := get_parent() as Character
+@onready var character := get_parent() as Character
 
 
 func _physics_process(delta: float) -> void:

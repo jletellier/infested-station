@@ -1,11 +1,11 @@
 extends Node2D
 
-export var _text: String = ""
-export var text_speed: float = 20
+@export var _text: String = ""
+@export var text_speed: float = 20
 
 var _text_length: int = 1
 
-onready var _label := $"MarginContainer/MarginContainer/CenterContainer/Text" as Label
+@onready var _label := $"MarginContainer/MarginContainer/CenterContainer/Text" as Label
 
 
 func _ready():
@@ -13,9 +13,9 @@ func _ready():
 
 
 func _process(delta):
-	_label.percent_visible += delta * text_speed / _text_length
-	if (_label.percent_visible > 1):
-		_label.percent_visible = 1
+	_label.visible_ratio += delta * text_speed / _text_length
+	if (_label.visible_ratio >= 1):
+		_label.visible_ratio = 1
 		set_process(false)
 
 
@@ -25,7 +25,7 @@ func set_text(value: String):
 	_text_length = _label.text.length()
 	if _text_length > 0:
 		visible = true
-		_label.percent_visible = 0
+		_label.visible_ratio = 0
 		set_process(true)
 	else:
 		visible = false

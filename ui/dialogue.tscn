@@ -1,71 +1,55 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://cdm3sh44p14k8"]
 
-[ext_resource path="res://ui/font_m5x7.tres" type="DynamicFont" id=1]
-[ext_resource path="res://external_resources/modern_interiors_ui_9patch.png" type="Texture" id=2]
-[ext_resource path="res://external_resources/modern_interiors_ui_handle.png" type="Texture" id=3]
-[ext_resource path="res://ui/dialogue.gd" type="Script" id=4]
+[ext_resource type="Texture2D" uid="uid://b57xuhvrv074m" path="res://external_resources/modern_interiors_ui_9patch.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dsw4enwd2i104" path="res://external_resources/modern_interiors_ui_handle.png" id="3"]
+[ext_resource type="Script" path="res://ui/dialogue.gd" id="4"]
+[ext_resource type="FontFile" uid="uid://cipqrirn6xm2u" path="res://external_resources/m5x7.ttf" id="4_mml7d"]
 
 [node name="Dialogue" type="Node2D"]
 z_index = 3
-script = ExtResource( 4 )
+script = ExtResource("4")
 _text = "Hi there!"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 grow_horizontal = 2
 grow_vertical = 0
-custom_constants/margin_left = 30
-custom_constants/margin_bottom = 12
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Box" type="NinePatchRect" parent="MarginContainer"]
-margin_left = 30.0
-margin_right = 82.0
-margin_bottom = 19.0
-texture = ExtResource( 2 )
+layout_mode = 2
+texture = ExtResource("2")
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Box"]
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 size_flags_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Handle" type="TextureRect" parent="MarginContainer/Box/CenterContainer"]
-margin_left = 18.0
-margin_right = 34.0
-margin_bottom = 16.0
-texture = ExtResource( 3 )
+layout_mode = 2
+texture = ExtResource("3")
 stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-margin_left = 30.0
-margin_right = 82.0
-margin_bottom = 19.0
-custom_constants/margin_right = 4
-custom_constants/margin_top = 1
-custom_constants/margin_left = 4
-custom_constants/margin_bottom = 5
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer"]
-margin_left = 4.0
-margin_top = 1.0
-margin_right = 48.0
-margin_bottom = 14.0
+layout_mode = 2
 
 [node name="Text" type="Label" parent="MarginContainer/MarginContainer/CenterContainer"]
-margin_right = 44.0
-margin_bottom = 13.0
+layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_colors/font_color = Color( 0.207843, 0.207843, 0.337255, 1 )
-custom_fonts/font = ExtResource( 1 )
+theme_override_colors/font_color = Color(0.21, 0.21, 0.34, 1)
+theme_override_fonts/font = ExtResource("4_mml7d")
+theme_override_font_sizes/font_size = 16
 text = "Hi there!"

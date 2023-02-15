@@ -1,105 +1,128 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=3 uid="uid://041q7h652nin"]
 
-[ext_resource path="res://external_resources/animated_door_big_5.png" type="Texture" id=1]
-[ext_resource path="res://levels/door.gd" type="Script" id=2]
-[ext_resource path="res://levels/open_door_action.gd" type="Script" id=3]
-[ext_resource path="res://ui/font_m5x7.tres" type="DynamicFont" id=4]
-[ext_resource path="res://external_resources/ui_item_count.png" type="Texture" id=5]
+[ext_resource type="Texture2D" uid="uid://c3kr834d0lxgw" path="res://external_resources/animated_door_big_5.png" id="1"]
+[ext_resource type="Script" path="res://levels/door.gd" id="2"]
+[ext_resource type="Script" path="res://levels/open_door_action.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://dgoqunvdq8ais" path="res://external_resources/ui_item_count.png" id="5"]
 
-[sub_resource type="AtlasTexture" id=97]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbky2"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=98]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1xsy"]
+atlas = ExtResource("1")
+region = Rect2(48, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=99]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfehm"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=100]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_tekww"]
+atlas = ExtResource("1")
+region = Rect2(16, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=101]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe8ok"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=102]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_wffxl"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=103]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_28shl"]
+atlas = ExtResource("1")
+region = Rect2(16, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=104]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_r17m7"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=105]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vn0d"]
+atlas = ExtResource("1")
+region = Rect2(48, 0, 16, 48)
 
-[sub_resource type="AtlasTexture" id=106]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 48 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_n85ve"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 16, 48)
 
-[sub_resource type="SpriteFrames" id=107]
-animations = [ {
-"frames": [ SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
-"loop": false,
-"name": "close",
-"speed": 12.0
+[sub_resource type="SpriteFrames" id="107"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbky2")
 }, {
-"frames": [ SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ) ],
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1xsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tekww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe8ok")
+}],
 "loop": false,
-"name": "open",
-"speed": 12.0
-} ]
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wffxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28shl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r17m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vn0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n85ve")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
 
-[sub_resource type="RectangleShape2D" id=108]
-extents = Vector2( 8, 8 )
+[sub_resource type="RectangleShape2D" id="108"]
+size = Vector2(16, 16)
 
 [node name="DoorHorizontal" type="StaticBody2D"]
 collision_layer = 33
 collision_mask = 0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="DoorSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -8, -40 )
-frames = SubResource( 107 )
-animation = "close"
+[node name="DoorSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -40)
+sprite_frames = SubResource("107")
+animation = &"close"
 frame = 4
-playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 108 )
+shape = SubResource("108")
 
 [node name="Action" type="Node2D" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
-[node name="ButtonHint" type="Sprite" parent="Action"]
+[node name="ButtonHint" type="Sprite2D" parent="Action"]
 visible = false
-position = Vector2( 9, -11 )
 z_index = 4
-texture = ExtResource( 5 )
+position = Vector2(9, -11)
+texture = ExtResource("5")
 
 [node name="Label" type="Label" parent="Action/ButtonHint"]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -28.0
-margin_top = -15.0
-margin_right = 12.0
-margin_bottom = -1.0
-custom_colors/font_color = Color( 0.207843, 0.207843, 0.337255, 1 )
-custom_fonts/font = ExtResource( 4 )
+offset_left = -28.0
+offset_top = -15.0
+offset_right = 12.0
+offset_bottom = -1.0
 text = "X"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}

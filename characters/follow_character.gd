@@ -4,7 +4,7 @@ const Character := preload("res://characters/character.gd")
 
 var _target: Character = null
 
-onready var _character := get_parent() as Character
+@onready var _character := get_parent() as Character
 
 
 func _ready() -> void:

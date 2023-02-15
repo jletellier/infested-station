@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-export var _open: bool = false
+@export var _open: bool = false
 
-onready var door_sprite := $DoorSprite as AnimatedSprite
-onready var collision_shape := $CollisionShape2D as CollisionShape2D
+@onready var door_sprite := $DoorSprite as AnimatedSprite2D
+@onready var collision_shape := $CollisionShape2D as CollisionShape2D
 
 
 func _ready() -> void:
@@ -13,8 +13,8 @@ func _ready() -> void:
 func update_open(open: bool) -> void:
 	_open = open
 	if open:
-		door_sprite.animation = "open"
+		door_sprite.play("open")
 		collision_shape.call_deferred("set", "disabled", true);
 	else:
-		door_sprite.animation = "close"
+		door_sprite.play("close")
 		collision_shape.call_deferred("set", "disabled", false);

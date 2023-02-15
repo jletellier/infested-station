@@ -9,7 +9,7 @@ func _on_Item_body_entered(body: Node) -> void:
 	if health_system:
 		health_system.take_damage(100)
 
-	var particle := ParticleRes.instance() as CPUParticles2D
+	var particle := ParticleRes.instantiate() as CPUParticles2D
 	particle.position = position
 	get_parent().add_child(particle)
 

@@ -3,8 +3,8 @@
 [ext_resource path="res://items/poison_trap_particles.gd" type="Script" id=1]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.00359712, 0.226619, 1 )
-colors = PoolColorArray( 0.21223, 0.21223, 0.21223, 1, 0.678223, 0.678223, 0.678223, 1, 1, 1, 1, 1 )
+offsets = PackedFloat32Array( 0.00359712, 0.226619, 1 )
+colors = PackedColorArray( 0.21223, 0.21223, 0.21223, 1, 0.678223, 0.678223, 0.678223, 1, 1, 1, 1, 1 )
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 z_index = 6

@@ -3,11 +3,11 @@ extends Node
 const FollowCharacter := preload("res://characters/follow_character.gd")
 const Character := preload("res://characters/character.gd")
 
-export var is_active: bool = true
+@export var is_active: bool = true
 
-onready var _player := $"../../Player" as Character
-onready var _follow_character := $"../FollowCharacter" as FollowCharacter
-onready var _button_hint := $"ButtonHint" as Sprite
+@onready var _player := $"../../Player" as Character
+@onready var _follow_character := $"../FollowCharacter" as FollowCharacter
+@onready var _button_hint := $"ButtonHint" as Sprite2D
 
 
 func trigger_action() -> void:

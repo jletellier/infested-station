@@ -11,10 +11,10 @@ const ActionSystem := preload("res://characters/action_system.gd")
 
 var state := MOVE
 
-onready var character := get_parent() as Character
-onready var action_system := $"../ActionSystem" as ActionSystem
-onready var level_node := $"../../../" as Node
-onready var level_player := level_node.get_node("AnimationPlayer") as AnimationPlayer
+@onready var character := get_parent() as Character
+@onready var action_system := $"../ActionSystem" as ActionSystem
+@onready var level_node := $"../../../" as Node
+@onready var level_player := level_node.get_node("AnimationPlayer") as AnimationPlayer
 
 
 func _process(_delta: float) -> void:
@@ -46,7 +46,7 @@ func _move_state(delta: float) -> void:
 
 	action_system.set_action_box_position(character.idle_input_vector * TILE_SIZE)
 
-	if !input_vector:
+	if input_vector == Vector2.ZERO:
 		if Input.is_action_just_pressed("ui_accept"):
 			state = ACTION
 

@@ -3,9 +3,9 @@ extends Node
 const Door := preload("res://levels/door.gd")
 const Inventory := preload("res://ui/inventory.gd")
 
-onready var _door := get_parent() as Door
-onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
-onready var _button_hint := $"ButtonHint" as Sprite
+@onready var _door := get_parent() as Door
+@onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
+@onready var _button_hint := $"ButtonHint" as Sprite2D
 
 
 func trigger_action():

@@ -2,18 +2,18 @@ extends Node
 
 const Character := preload("res://characters/character.gd")
 
-export var path := NodePath()
-export var loop: bool = false
-export var autorun: bool = true
-export var update_rotation: bool = true
+@export var path := NodePath()
+@export var loop: bool = false
+@export var autorun: bool = true
+@export var update_rotation: bool = true
 
 var current_point_idx: int = 0
 var target_point_idx: int = 0
 var direction: int = 1
 
-onready var path_2d := get_node(path) as Path2D
-onready var curve := path_2d.curve
-onready var character := get_parent() as Character
+@onready var path_2d := get_node(path) as Path2D
+@onready var curve := path_2d.curve
+@onready var character := get_parent() as Character
 
 
 func _ready() -> void:

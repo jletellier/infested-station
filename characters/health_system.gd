@@ -3,12 +3,12 @@ extends Node
 const Character := preload("res://characters/character.gd")
 const TriggerUIElements := preload("res://ui/trigger_ui_elements.gd")
 
-export var health: int = 100
+@export var health: int = 100
 
 var _is_dead: bool = false
 
-onready var character := get_parent() as Character
-onready var trigger_ui_elements = get_node("../../../TriggerUIElements") as TriggerUIElements
+@onready var character := get_parent() as Character
+@onready var trigger_ui_elements = get_node("../../../TriggerUIElements") as TriggerUIElements
 
 
 func take_damage(strength: int, origin_position := Vector2()) -> void:

@@ -7,9 +7,9 @@ const Inventory := preload("res://ui/inventory.gd")
 
 var _current_action_node: Node = null
 
-onready var _action_box := get_node("../ActionBox") as Area2D
-onready var _character := get_parent() as Character
-onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
+@onready var _action_box := get_node("../ActionBox") as Area2D
+@onready var _character := get_parent() as Character
+@onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
 
 
 func _trigger_place_item() -> void:
@@ -20,9 +20,10 @@ func _trigger_place_item() -> void:
 
 	# Check if new position is not colliding with anything
 	var space_state := _character.get_world_2d().direct_space_state
-	var result := space_state.intersect_ray(_character.position, new_item_pos)
-	if !result:
-		var item := PoisonTrapRes.instance()
+	var query := PhysicsRayQueryParameters2D.create(_character.position, new_item_pos)
+	var result := space_state.intersect_ray(query)
+	if !result.is_empty():
+		var item := PoisonTrapRes.instantiate()
 		item.position = new_item_pos
 		_character.get_parent().add_child(item)
 		_inventory.increment_item_count(2, -1)

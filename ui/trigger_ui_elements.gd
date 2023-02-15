@@ -2,9 +2,9 @@ extends Node
 
 const Inventory := preload("res://ui/inventory.gd")
 
-onready var _cutscene_player := $"/root/MainScene/HUD/CutsceneRect/AnimationPlayer" as AnimationPlayer
-onready var _curtain_player := $"/root/MainScene/HUD/CurtainRect/AnimationPlayer" as AnimationPlayer
-onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
+@onready var _cutscene_player := $"/root/MainScene/HUD/CutsceneRect/AnimationPlayer" as AnimationPlayer
+@onready var _curtain_player := $"/root/MainScene/HUD/CurtainRect/AnimationPlayer" as AnimationPlayer
+@onready var _inventory := $"/root/MainScene/HUD/Inventory" as Inventory
 
 
 func set_cutscene_mode(is_enabled: bool) -> void:

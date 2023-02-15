@@ -1,21 +1,20 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const TILE_SIZE: int = 16
-const TILE_HALF_SIZE: int = TILE_SIZE / 2
+const TILE_HALF_SIZE: int = int(TILE_SIZE / 2.0)
 
-export var acceleration: int = 325
-export var max_speed: int = 60
+@export var acceleration: int = 325
+@export var max_speed: int = 60
 
-var velocity := Vector2.ZERO
 var idle_input_vector := Vector2.ZERO
 var last_input_vector := Vector2.ZERO
 var snapped_position := Vector2.ZERO
 var is_snapping_x := false
 var is_snapping_y := false
 
-onready var animation_player := $AnimationPlayer as AnimationPlayer
-onready var animation_tree := $AnimationTree as AnimationTree
-onready var animation_state := (
+@onready var animation_player := $AnimationPlayer as AnimationPlayer
+@onready var animation_tree := $AnimationTree as AnimationTree
+@onready var animation_state := (
 		animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 )
 
@@ -63,7 +62,7 @@ func move(delta: float, input_vector := Vector2.ZERO) -> void:
 		animation_state.travel("idle")
 		velocity = Vector2.ZERO
 
-	velocity = move_and_slide(velocity)
+	move_and_slide()
 
 	if is_snapping_x && abs(velocity.x) < acceleration * delta:
 		snapped_position.x = _snap_float(position.x)
